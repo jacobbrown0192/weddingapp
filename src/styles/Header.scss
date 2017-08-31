@@ -1,0 +1,47 @@
+@import '_shared';
+
+@media only screen and (min-width: 600px) {
+  .collapse {
+    display: block;
+  }
+
+  .navbar-header {
+    float: left;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .navbar-nav.navbar-left {
+    float: left;
+    margin: 0;
+  }
+
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+
+  .navbar-nav.navbar-right {
+    float: right;
+    margin: 0;
+  }
+  .navbar-nav>li {
+    float: left;
+  }
+  .navbar-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .collapse {
+    display: none;
+  }
+
+  .navbar-header {
+    display: block;
+  }
+}
