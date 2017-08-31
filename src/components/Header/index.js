@@ -27,6 +27,10 @@ class Header extends Component
                                 <NavItem eventKey={3}><Link to='/rsvp'>RSVP</Link></NavItem>
                                 <NavItem eventKey={4}><Link to='/ourstory'>Our Story</Link></NavItem>
                                 <NavItem eventKey={5}><Link to='/yourstories'>Your Stories</Link></NavItem>
+                                <NavItem eventKey={6}><Link to='/schedule'>Schedule</Link></NavItem>
+                                <NavItem eventKey={7}><Link to='/gallery'>Gallery</Link></NavItem>
+                                <NavItem eventKey={8}><Link to='/faqs'>FAQs</Link></NavItem>
+                                <NavItem eventKey={9}><Link to='/songrequest'>Song Requests</Link></NavItem>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

@@ -24,7 +24,11 @@ class Main extends Component
                     <Route path='/rsvp' component={RSVP}/>
                     <Route path='/upload' component={UploadPhotos}/>
                     <Route path='/ourstory' component={OurStory}/>
-                    <Route path='/ourstory' component={YourStories}/>
+                    <Route path='/yourstories' component={YourStories}/>
+                    <Route path='/schedule'>Schedule</Route>>
+                    <Route path='/gallery'>Gallery</Route>>
+                    <Route path='/faqs'>FAQs</Route>>
+                    <Route path='/songrequest'>Song Requests</Route>>
                 </Switch>
             </main>
         )
