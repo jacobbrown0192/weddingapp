@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
 import '../../styles/Header.css';
+import placeholder from '../../images/placeholder.jpg'
 
 
 // The Header creates links that can be used to navigate
@@ -12,12 +13,12 @@ class Header extends Component
     {
         return(
             <header>
+                <div className="header-img">
+                    <img src={placeholder} alt="placeholder"/>
+                </div>
                 <nav>
                     <Navbar collapseOnSelect>
                         <Navbar.Header>
-                            <Navbar.Brand>
-                                <Link to='/'>Wedding</Link>
-                            </Navbar.Brand>
                             <Navbar.Toggle/>
                         </Navbar.Header>
                         <Navbar.Collapse>

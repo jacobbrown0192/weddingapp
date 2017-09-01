@@ -24,3 +24,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+@media (min-width: 1000px) {
+  .App-border{
+    display: block;
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

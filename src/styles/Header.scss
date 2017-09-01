@@ -35,3 +35,18 @@
     display:block !important;
   }
 }
+.navbar-nav {
+  width: 100%;
+  text-align: center;
+  > li {
+    float: none;
+    display: inline-block;
+  }
+}
+img {
+  display: block;
+  width: auto;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
