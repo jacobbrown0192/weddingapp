@@ -13,7 +13,6 @@ class Home extends Component
     getTimeRemaining()
     {
         var t = Date.parse(this.state.deadline) - Date.parse(new Date());
-        console.log('hahaha')
         this.setState({remaining: t})
     }
 
