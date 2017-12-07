@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+import CommentBox from './components/CommentBox';
 
 class YourStories extends Component
 {
@@ -6,7 +8,10 @@ class YourStories extends Component
     {
         return(
             <div>
-                <h1>Write down some stories about either of us!</h1>
+                <div>
+                    <h1>Write down some stories about either of us!</h1>
+                </div>
+                <CommentBox url='http://localhost:3001/api/comments' pollInterval={2000}/>
             </div>
         )
     }
