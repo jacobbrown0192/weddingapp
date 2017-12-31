@@ -25,8 +25,8 @@ class CommentForm extends Component {
             return;
         }
         this.props.onCommentSubmit(this.createNewComment(text, author));
-        this.setState({ author: '', text: ''})
-        console.log(`${this.state.author} said “${this.state.text}”`)
+        this.setState({ author: '', text: ''});
+        console.log('${this.state.author} said "${this.state.text}"')
         //we will be tying this into the POST method in a bit
     }
 
