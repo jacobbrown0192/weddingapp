@@ -45,7 +45,7 @@ class CommentBox extends Component {
         axios.delete(`${this.props.url}/${id}`)
             .then(res=>
             {
-                console.log('Comment deleted');
+                console.log('User deleted');
             })
     }
 
