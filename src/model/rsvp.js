@@ -8,12 +8,10 @@ var Schema = mongoose.Schema;
 var RsvpSchema = new Schema({
     id: String,
     num: Number,
-    person: [{
-        name: String,
-        rsvp: Boolean,
-        food: String,
-        consideration: String,
-    }],
+    name: String,
+    attending: Boolean,
+    food: String,
+    consideration: String,
 });
 //export our module to use in server.js
 module.exports = mongoose.model('Rsvp', RsvpSchema);

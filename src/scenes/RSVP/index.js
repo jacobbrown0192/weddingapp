@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import RSVPBox from './components/RSVPBox'
+import {PageHeader} from 'react-bootstrap';
 
 class RSVP extends Component
 {
@@ -6,7 +8,8 @@ class RSVP extends Component
     {
         return(
             <div>
-                <h1>You can RSVP here!</h1>
+                <PageHeader>You can RSVP here!</PageHeader>
+                <RSVPBox url='http://localhost:3001/api/rsvp' userid={this.props.userid} pollInterval={2000} />
             </div>
         )
     }

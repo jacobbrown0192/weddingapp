@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
+let userToken = require('../../utils/UserToken');
+let storeToken = userToken.storeToken;
+
 class SignInPage extends Component
 {
     constructor(props)
@@ -33,6 +36,7 @@ class SignInPage extends Component
     {
         this.props.AuthHandler(data);
         this.setState({auth: data.access});
+        storeToken(data._id);
     }
 
     createUser(password, access)

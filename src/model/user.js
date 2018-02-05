@@ -12,6 +12,8 @@ var UserSchema = new Schema({
 //
 autoIncrement.initialize(mongoose.connection);
 
+
+//Remove crypto stuff to get just string compares. could be fine for this application.
 UserSchema.pre('save', function(next) {
     var user = this;
 

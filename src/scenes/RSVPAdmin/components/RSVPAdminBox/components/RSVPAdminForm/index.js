@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import DynamicRSVPInputs from './components/DynamicRSVPInputs'
 import {FormGroup, FormControl, ControlLabel, Col, Row, Button, PageHeader} from 'react-bootstrap';
 import axios from 'axios';
+import DynamicRSVPInputs from "../../../../../RSVPAddPage/components/DynamicRSVPInputs/index";
 
 class RSVPAddPage extends Component
 {
@@ -51,20 +51,18 @@ class RSVPAddPage extends Component
         return this.setState({[e.target.name]: e.target.value});
     }
 
-    //TODO Test this, esp. the RSVP list
     onSave(event) {
         event.preventDefault();
         if (this.state.rsvp.length > 0)
         {
-            var rsvpDTO = this.createFullRsvp();
+            let rsvpDTO = this.createFullRsvp();
             axios.post('http://localhost:3001/api/rsvpadd', rsvpDTO)
                 .catch(err => {
                     console.error(err);
-                })
+                });
             this.setState({rsvp:[], inputCount:0});
         }
     }
-
 
     createEmptyRsvp(c)
     {
@@ -95,7 +93,7 @@ class RSVPAddPage extends Component
     {
         let inputs = [];
 
-        for (var i = 0; i < this.state.inputCount; i++)
+        for (var i = 0; i <= this.state.inputCount; i++)
         {
             inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[i]} userid={this.props.userid} key={i} handleRSVPInputs={this.handleRSVPInputs} />)
         }
@@ -104,6 +102,8 @@ class RSVPAddPage extends Component
                 <PageHeader>Sign Up</PageHeader>
                 < form class = "form-group">
                     <FormGroup>
+
+                        {/*TODO: add signup right here rather then using ID*/}
                         <Col sm={2}>
                             <ControlLabel>
                                 ID:

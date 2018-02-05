@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import DynamicRSVPInputs from './components/DynamicRSVPInputs'
 import {FormGroup, FormControl, ControlLabel, Col, Row, Button, PageHeader} from 'react-bootstrap';
 import axios from 'axios';
+import DynamicRSVPInputs from "../../../../../../../../../RSVPAddPage/components/DynamicRSVPInputs/index";
 
-class RSVPAddPage extends Component
+class RSVPAdminUserForm extends Component
 {
     constructor(props)
     {
         super(props);
-        this.state = {userid: -1, rsvp: [], finished: false, inputCount: 0 };
+        this.state = {userid: -1, rsvp: [], finished: false, inputCount: 0, lastIndex: 0 };
         this.onChange = this.onChange.bind(this);
         this.onSave = this.onSave.bind(this);
+        this.onDelete = this.onDelete.bind(this);
         this.addInput = this.addInput.bind(this);
         this.handleRSVPInputs = this.handleRSVPInputs.bind(this);
     }
@@ -35,7 +36,7 @@ class RSVPAddPage extends Component
         return rsvp
     }
 
-    createFullRsvp(r)
+    createRsvpDTO(r)
     {
         let rsvpDTO =
             {
@@ -56,15 +57,19 @@ class RSVPAddPage extends Component
         event.preventDefault();
         if (this.state.rsvp.length > 0)
         {
-            var rsvpDTO = this.createFullRsvp();
+            var rsvpDTO = this.createRsvpDTO();
             axios.post('http://localhost:3001/api/rsvpadd', rsvpDTO)
                 .catch(err => {
                     console.error(err);
-                })
+                });
             this.setState({rsvp:[], inputCount:0});
         }
     }
 
+    onDelete(event) {
+        event.preventDefault();
+
+    }
 
     createEmptyRsvp(c)
     {
@@ -80,7 +85,7 @@ class RSVPAddPage extends Component
 
     addInput()
     {
-        let count = this.state.inputCount;
+        let count = this.state.inputCount + this.state.lastIndex;
         let tempRsvp = this.createEmptyRsvp(count);
         this.handleRSVPInputs(tempRsvp);
         this.setState({inputCount: count+1})
@@ -88,37 +93,28 @@ class RSVPAddPage extends Component
 
     componentWillMount()
     {
-        this.setState({userid: this.props.userid})
+        this.setState({userid: this.props.userid});
+        this.setState({lastIndex: this.props.lastIndex});
+    }
+
+    componentWillReceiveProps()
+    {
+        this.setState({userid: this.props.userid});
+        this.setState({lastIndex: this.props.lastIndex});
     }
 
     render()
     {
         let inputs = [];
 
-        for (var i = 0; i < this.state.inputCount; i++)
+        for (var i = 0; i <= this.state.inputCount; i++)
         {
-            inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[i]} userid={this.props.userid} key={i} handleRSVPInputs={this.handleRSVPInputs} />)
+            inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[i]} userid={this.props.userid} key={this.state.lastIndex + i} handleRSVPInputs={this.handleRSVPInputs} />)
         }
         return (
             < div>
-                <PageHeader>Sign Up</PageHeader>
                 < form class = "form-group">
                     <FormGroup>
-                        <Col sm={2}>
-                            <ControlLabel>
-                                ID:
-                            </ControlLabel>
-                        </Col>
-                        <Col sm={10}>
-                            <FormControl
-                                class="form-control"
-                                name="userid"
-                                label="userid"
-                                type="text"
-                                value={this.state.userid}
-                                onChange={this.onChange}/>
-                        </Col>
-                        <Row/>
                         {inputs}
                     </FormGroup>
 
@@ -138,10 +134,18 @@ class RSVPAddPage extends Component
                             Submit
                         </Button>
                     </Col>
+                    <Col sm={1}>
+                        < Button
+                            bsStyle="primary"
+                            type="submit"
+                            onClick={this.onDelete}>
+                            Delete
+                        </Button>
+                    </Col>
                 </form>
             </div>
         );
     }
 }
 
-export default RSVPAddPage;
+export default RSVPAdminUserForm;
