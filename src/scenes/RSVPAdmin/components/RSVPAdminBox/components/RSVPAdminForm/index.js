@@ -8,7 +8,7 @@ class RSVPAddPage extends Component
     constructor(props)
     {
         super(props);
-        this.state = {userid: -1, rsvp: [], finished: false, inputCount: 0 };
+        this.state = {userid: -1, rsvp: [], finished: false, inputCount: 0, password: '', access: 0 };
         this.onChange = this.onChange.bind(this);
         this.onSave = this.onSave.bind(this);
         this.addInput = this.addInput.bind(this);
@@ -35,12 +35,12 @@ class RSVPAddPage extends Component
         return rsvp
     }
 
-    createFullRsvp(r)
+    createFullRsvp(id)
     {
         let rsvpDTO =
             {
                 rsvp: this.state.rsvp,
-                userid: this.state.userid,
+                userid: id,
                 number: this.state.inputCount
             };
         return rsvpDTO
@@ -55,14 +55,41 @@ class RSVPAddPage extends Component
         event.preventDefault();
         if (this.state.rsvp.length > 0)
         {
-            let rsvpDTO = this.createFullRsvp();
-            axios.post('http://localhost:3001/api/rsvpadd', rsvpDTO)
-                .catch(err => {
-                    console.error(err);
-                });
-            this.setState({rsvp:[], inputCount:0});
+            let autoPassword = this.autoGeneratePassword(); //TODO: Add this in and remove encryption from the users
+            if (this.state.password)
+            {
+                var user = this.createUser(this.state.password, 1);
+                axios.post('http://localhost:3001/api/signup', user)
+                    .catch(err => {
+                        console.error(err);
+                    })
+                    .then(res => {
+                        let user = res; //TODO: FIX THIS UP, TEST SIGNUP API USER RETURN
+                        let rsvpDTO = this.createFullRsvp(user);
+                        axios.post('http://localhost:3001/api/rsvpadd', rsvpDTO)
+                            .catch(err => {
+                                console.error(err);
+                            });
+                    });
+            }
         }
+        this.setState({rsvp:[], inputCount:0, password: '', access: 0});
     }
+
+    autoGeneratePassword()
+    {
+        return 'test' //TODO: Add niceware
+    }
+
+    createUser(password, access)
+    {
+        let user = {
+            password: password,
+            access: access
+        };
+        return user;
+    }
+
 
     createEmptyRsvp(c)
     {
@@ -93,29 +120,29 @@ class RSVPAddPage extends Component
     {
         let inputs = [];
 
-        for (var i = 0; i <= this.state.inputCount; i++)
+        for (var i = 0; i < this.state.inputCount; i++)
         {
             inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[i]} userid={this.props.userid} key={i} handleRSVPInputs={this.handleRSVPInputs} />)
         }
         return (
             < div>
-                <PageHeader>Sign Up</PageHeader>
+                <PageHeader>Add Guest</PageHeader>
                 < form class = "form-group">
                     <FormGroup>
 
                         {/*TODO: add signup right here rather then using ID*/}
                         <Col sm={2}>
                             <ControlLabel>
-                                ID:
+                                Password:
                             </ControlLabel>
                         </Col>
                         <Col sm={10}>
                             <FormControl
                                 class="form-control"
-                                name="userid"
-                                label="userid"
+                                name="password"
+                                label="password"
                                 type="text"
-                                value={this.state.userid}
+                                value={this.state.password}
                                 onChange={this.onChange}/>
                         </Col>
                         <Row/>

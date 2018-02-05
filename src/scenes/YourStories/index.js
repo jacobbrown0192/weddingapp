@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import CommentBox from './components/CommentBox';
 
+//TODO:Update to bootstrap
 class YourStories extends Component
 {
     render()

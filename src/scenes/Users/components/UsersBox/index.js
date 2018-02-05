@@ -15,6 +15,7 @@ class UsersBox extends Component {
 
     loadUsersFromServer()
     {
+        //TODO: Load name of first rsvp? maybe??
         axios.get(this.props.url)
             .then(res =>
             {
@@ -25,6 +26,7 @@ class UsersBox extends Component {
 
     handleUserDelete(id)
     {
+        //TODO: When deleting user delete RSVP stuffs
         axios.delete(`${this.props.url}/${id}`)
             .then(res=>
             {

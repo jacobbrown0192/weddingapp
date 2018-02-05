@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import UsersBox from './components/UsersBox';
 
+//TODO: Update to bootstrap
 class Users extends Component
 {
     render()

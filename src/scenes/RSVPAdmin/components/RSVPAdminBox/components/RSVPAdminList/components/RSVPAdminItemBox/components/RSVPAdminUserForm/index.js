@@ -67,8 +67,8 @@ class RSVPAdminUserForm extends Component
     }
 
     onDelete(event) {
+        //TODO: delete all rsvps and user
         event.preventDefault();
-
     }
 
     createEmptyRsvp(c)
