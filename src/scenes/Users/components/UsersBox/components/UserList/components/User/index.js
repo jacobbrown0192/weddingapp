@@ -11,29 +11,7 @@ class User extends Component {
                 id: ''
             };
         this.deleteUser = this.deleteUser.bind(this);
-        // this.updateComment = this.updateComment.bind(this);
-        // this.handleAuthorChange = this.handleAuthorChange.bind(this);
-        // this.handleTextChange = this.handleTextChange.bind(this);
-        // this.handleCommentUpdate = this.handleCommentUpdate.bind(this);
     }
-    //
-    // updateComment(e) {
-    //     e.preventDefault();
-    //     this.setState({toBeUpdated: !this.state.toBeUpdated});
-    // }
-
-    // handleCommentUpdate(e) {
-    //     e.preventDefault();
-    //     let id = this.props.uniqueId;
-    //     let author = (this.state.author) ? this.state.author : null;
-    //     let text = (this.state.text) ? this.state.text : null;
-    //     let comment = {author: author, text: text};
-    //     this.props.onCommentUpdate(id, comment);
-    //     this.setState({
-    //         author: '',
-    //         text: ''
-    //     })
-    // }
 
     deleteUser(e) {
         e.preventDefault();
@@ -41,14 +19,6 @@ class User extends Component {
         this.props.onUserDelete(id);
         console.log('oops deleted');
     }
-    //
-    // handleTextChange(e) {
-    //     this.setState({text: e.target.value});
-    // }
-    //
-    // handleAuthorChange(e) {
-    //     this.setState({author: e.target.value});
-    // }
 
     rawMarkup() {
         let rawMarkup = marked(this.props.children.toString());

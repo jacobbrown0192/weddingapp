@@ -10,7 +10,6 @@ class UserList extends Component {
                 <User
                     uniqueId={ user['_id'] }
                     onUserDelete={ this.props.onUserDelete }
-                    // onCommentUpdate={ this.props.onCommentUpdate }
                     key={ user['_id'] }
                     power={this.props.power}>
                     { user.password }
