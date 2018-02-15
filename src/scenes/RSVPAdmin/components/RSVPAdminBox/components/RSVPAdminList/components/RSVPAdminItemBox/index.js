@@ -8,16 +8,17 @@ class RSVPAdminItemBox extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {data: [], url: '', lastIndex: 0};
+        this.state = {data: [], url: 'http://localhost:3001/api/rsvp', lastIndex: 0, userid: -1};
         this.handleRsvpDelete = this.handleRsvpDelete.bind(this);
         this.handleRSVPUpdate = this.handleRSVPUpdate.bind(this);
         this.loadRSVPFromServer = this.loadRSVPFromServer.bind(this);
         this.getLastIndex = this.getLastIndex.bind(this);
+        this.getUserId = this.getUserId.bind(this);
     }
 
     loadRSVPFromServer()
     {
-        axios.get(this.props.url)
+        axios.get(this.state.url)
             .then(res => {
                 this.setState({data: res.data});
             });
@@ -25,7 +26,7 @@ class RSVPAdminItemBox extends Component {
 
     handleRSVPUpdate(id, rsvp)
     {
-        axios.put(`${this.props.url}/${id}`, rsvp)
+        axios.put(`${this.state.url}/${id}`, rsvp)
             .catch(err =>
             {
                 console.log(err);
@@ -34,7 +35,7 @@ class RSVPAdminItemBox extends Component {
 
     handleRsvpDelete(id)
     {
-        axios.delete(`${this.props.url}/${id}`)
+        axios.delete(`${this.state.url}/${id}`)
             .then(res=>
             {
                 console.log('RSVP deleted');
@@ -50,31 +51,48 @@ class RSVPAdminItemBox extends Component {
                 index = d.num;
             }
         });
-        this.setState({index: index})
+        if(index !== this.state.index) {
+            this.setState({index: index})
+        }
+    }
+
+    getUserId(data)
+    {
+        for(let d of data)
+        {
+            if(parseInt(d.id) !== this.state.userid) {
+                this.setState({userid: parseInt(d.id)});
+            }
+            break;
+        }
     }
 
     componentDidMount()
     {
         this.setState({data:this.props.data});
         this.getLastIndex(this.props.data);
+        this.getUserId(this.props.data);
     }
 
-    componentWillReceiveProps()
+    componentDidUpdate()
     {
-        this.setState({data:this.props.data});
+        if(this.props.data !== this.state.data) {
+            this.setState({data: this.props.data});
+        }
         this.getLastIndex(this.props.data);
+        this.getUserId(this.props.data);
     }
 
     render() {
         return (
             <div>
-                <h2>User {this.props.userid}:</h2>
+                <h2>User {this.state.userid}:</h2>
                 <RSVPAdminUserList
                     onRSVPUpdate={this.handleRSVPUpdate}
                     onRSVPDelete={this.handleRsvpDelete}
                     data={ this.state.data }
                     power={ this.props.power }
-                    userid={ this.props.userid }/>
+                    userid={ this.state.userid }/>
                 <RSVPAdminUserForm
                     lastIndex={this.state.index}
                     onCommentSubmit={ this.handleCommentSubmit }/>

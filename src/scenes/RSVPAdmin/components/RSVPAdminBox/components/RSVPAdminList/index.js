@@ -7,25 +7,50 @@ class RSVPAdminList extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {data: []};
+        this.state = {data: [], rawdata: []};
         this.orderData = this.orderData.bind(this);
+    }
+
+    arrayCompare(a1, a2) {
+        if(a1.length != a2.length) {
+            return false;
+        }
+        for(var i in a1) {
+            // Don't forget to check for arrays in our arrays.
+            if(a1[i] instanceof Array && a2[i] instanceof Array) {
+                if(!this.arrayCompare(a1[i], a2[i])) {
+                    return false;
+                }
+            }
+            else if(a1[i] != a2[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     orderData()
     {
-        let data = this.state.data;
-        this.props.data.forEach(function (d) {
-            data[d.id][d.num] = d;
-        });
-        this.setState({data: data});
+        if (this.props.data.length > 0) {
+            let data = new Array();
+            this.props.data.forEach(function (d) {
+                if (typeof data[parseInt(d.id)] === 'undefined') {
+                    data[parseInt(d.id)] = new Array();
+                }
+                data[parseInt(d.id)][d.num] = d;
+            });
+            if (!this.arrayCompare(data,this.state.data)) {
+                this.setState({data: data});
+            }
+        }
     }
 
-    componentWillMount()
+    componentDidMount()
     {
         this.orderData();
     }
 
-    componentWillReceiveProps()
+    componentDidUpdate()
     {
         this.orderData();
     }
@@ -35,8 +60,6 @@ class RSVPAdminList extends Component {
         let usersNodes = this.state.data.map(data => {
             return (
                 <RSVPAdminItemBox
-                    userid={ this.props.userid }
-                    key={this.props.userid}
                     data={data}
                     onRSVPUpdate={ this.props.onRSVPUpdate }
                     power={this.props.power}>
@@ -48,29 +71,6 @@ class RSVPAdminList extends Component {
                 { usersNodes }
             </div>
         )
-
-
-
-        // let rsvpNodes = this.props.data.map(rsvp => {
-        //     return (
-        //         <RSVP
-        //             userid={ this.props.userid }
-        //             uniqueId={ rsvp['_id'] }
-        //             onRSVPUpdate={ this.props.onRSVPUpdate }
-        //             inputCount={rsvp.num}
-        //             name= {rsvp.name}
-        //             attending={rsvp.attending}
-        //             food={rsvp.food}
-        //             consideration={rsvp.consideration}
-        //             power={this.props.power}>
-        //         </RSVP>
-        //     )
-        // });
-        // return (
-        //     <div>
-        //         { rsvpNodes }
-        //     </div>
-        // )
     }
 }
 export default RSVPAdminList;

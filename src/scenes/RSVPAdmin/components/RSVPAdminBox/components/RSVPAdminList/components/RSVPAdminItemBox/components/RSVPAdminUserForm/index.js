@@ -85,8 +85,8 @@ class RSVPAdminUserForm extends Component
 
     addInput()
     {
-        let count = this.state.inputCount + this.state.lastIndex;
-        let tempRsvp = this.createEmptyRsvp(count);
+        let count = this.state.inputCount;
+        let tempRsvp = this.createEmptyRsvp(count + this.state.lastIndex + 1); //This is iffy
         this.handleRSVPInputs(tempRsvp);
         this.setState({inputCount: count+1})
     }
@@ -97,17 +97,22 @@ class RSVPAdminUserForm extends Component
         this.setState({lastIndex: this.props.lastIndex});
     }
 
-    componentWillReceiveProps()
+    componentDidUpdate()
     {
-        this.setState({userid: this.props.userid});
-        this.setState({lastIndex: this.props.lastIndex});
+        if(this.props.userid !== this.state.userid) {
+            this.setState({userid: this.props.userid});
+        }
+
+        if(this.props.lastIndex !== this.state.lastIndex) {
+            this.setState({lastIndex: this.props.lastIndex});
+        }
     }
 
     render()
     {
         let inputs = [];
 
-        for (var i = 0; i <= this.state.inputCount; i++)
+        for (var i = 1; i <= this.state.inputCount; i++)
         {
             inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[i]} userid={this.props.userid} key={this.state.lastIndex + i} handleRSVPInputs={this.handleRSVPInputs} />)
         }
@@ -143,6 +148,7 @@ class RSVPAdminUserForm extends Component
                         </Button>
                     </Col>
                 </form>
+                <Row/>
             </div>
         );
     }

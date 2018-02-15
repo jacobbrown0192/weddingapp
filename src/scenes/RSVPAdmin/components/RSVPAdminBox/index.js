@@ -43,7 +43,7 @@ class RSVPAdminBox extends Component
     componentDidMount()
     {
         this.loadRSVPFromServer();
-        setInterval(this.loadRSVPFromServer, this.props.pollInterval);
+        // setInterval(this.loadRSVPFromServer, this.props.pollInterval);
     }
 
     render() {
@@ -53,8 +53,7 @@ class RSVPAdminBox extends Component
                 <RSVPAdminList
                     onRSVPUpdate={this.handleRSVPUpdate}
                     data={ this.state.data }
-                    power={ this.props.power }
-                    userid={ this.props.userid }/>
+                    power={ this.props.power }/>
                 <RSVPAdminForm onCommentSubmit={ this.handleCommentSubmit }/>
             </div>
         )

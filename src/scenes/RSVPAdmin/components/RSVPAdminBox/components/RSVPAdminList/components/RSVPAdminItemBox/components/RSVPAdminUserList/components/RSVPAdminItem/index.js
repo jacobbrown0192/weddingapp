@@ -28,7 +28,7 @@ class RSVPAdminItem extends Component {
 
     deleteRsvp()
     {
-        this.props.onRSVPdelete(this.props.uniqueId);
+        this.props.onRSVPDelete(this.props.uniqueId);
     }
 
     handleOnChange(e)

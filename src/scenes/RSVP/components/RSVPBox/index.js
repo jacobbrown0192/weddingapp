@@ -36,7 +36,7 @@ class RSVPBox extends Component {
     componentDidMount()
     {
         this.loadRSVPFromServer();
-        setInterval(this.loadRSVPFromServer, this.props.pollInterval);
+        // setInterval(this.loadRSVPFromServer, this.props.pollInterval);
     }
 
     render() {
