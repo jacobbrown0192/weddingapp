@@ -45,11 +45,6 @@ class RSVP extends Component {
         this.setStateBasedOnProps();
     }
 
-    componentDidUpdate()
-    {
-        this.setStateBasedOnProps();
-    }
-
     render() {
         return(
             <div>

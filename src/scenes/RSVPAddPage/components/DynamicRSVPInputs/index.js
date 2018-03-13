@@ -27,7 +27,8 @@ class DynamicRSVPInputs extends Component
     componentWillMount()
     {
         this.setState(this.props.rsvpValues);
-        this.setState({userid: this.props.userid})
+        this.setState({userid: this.props.userid});
+        this.setState({num: this.props.num});
     }
 
     render()

@@ -114,7 +114,7 @@ class RSVPAdminUserForm extends Component
 
         for (var i = 1; i <= this.state.inputCount; i++)
         {
-            inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[i]} userid={this.props.userid} key={this.state.lastIndex + i} handleRSVPInputs={this.handleRSVPInputs} />)
+            inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[this.state.lastIndex + i]} userid={this.props.userid} key={this.state.lastIndex + i} num={this.state.lastIndex + i} handleRSVPInputs={this.handleRSVPInputs} />)
         }
         return (
             < div>

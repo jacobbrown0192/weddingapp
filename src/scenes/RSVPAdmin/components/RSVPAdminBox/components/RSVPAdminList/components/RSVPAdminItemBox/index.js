@@ -33,6 +33,7 @@ class RSVPAdminItemBox extends Component {
             })
     }
 
+    //TODO: on delete reload data.
     handleRsvpDelete(id)
     {
         axios.delete(`${this.state.url}/${id}`)
@@ -95,7 +96,8 @@ class RSVPAdminItemBox extends Component {
                     userid={ this.state.userid }/>
                 <RSVPAdminUserForm
                     lastIndex={this.state.index}
-                    onCommentSubmit={ this.handleCommentSubmit }/>
+                    onCommentSubmit={ this.handleCommentSubmit }
+                    userid={this.state.userid}/>
             </div>
         )
     }

@@ -15,7 +15,7 @@ var router = express.Router();
 //it up, or 3001
 var port = process.env.API_PORT || 3001;
 
-mongoose.connect('Mongo connection goes here');
+mongoose.connect();
 
 //now we should configure the API to use bodyParser and look for
 //JSON data in the request body
@@ -164,24 +164,54 @@ router.route('/user/:user_id')
         })
     });
 
-router.route('/rsvpadd') //TODO: FIX to Allo Multiple at once
+router.route('/rsvpadd') //TODO: FIX to Allow Multiple at once
     .post(function(req,res)
     {
+        let rsvparr = []
         req.body.rsvp.forEach(function(r)
         {
-            let rsvp = new RSVP();
-            rsvp.id = req.body.userid;
-            rsvp.num = r.num;
-            rsvp.name = r.name;
-            rsvp.attending = r.attending;
-            rsvp.food = r.food;
-            rsvp.consideration = r.consideration;
-            rsvp.save(function (err) {
-                if (err)
-                    res.send(err);
-                res.json({message: 'RSVP successfully added!'});
-            });
-        })
+            if(r !== null) {
+                let rsvp = new RSVP();
+                rsvp.id = req.body.userid;
+                rsvp.num = r.num;
+                rsvp.name = r.name;
+                rsvp.attending = r.attending;
+                rsvp.food = r.food;
+                rsvp.consideration = r.consideration;
+                console.log(rsvp);
+                rsvparr.push(rsvp);
+            }
+        });
+        RSVP.insertMany(rsvparr,{ordered:false},function(err,docs)
+        {
+            if (err)
+                res.send(err);
+            res.json({message: 'RSVP successfully added!'});
+        });
+
+
+
+
+
+
+        // req.body.rsvp.forEach(function(r)
+        // {
+        //     if(r !== null) {
+        //         let rsvp = new RSVP();
+        //         rsvp.id = req.body.userid;
+        //         rsvp.num = r.num;
+        //         rsvp.name = r.name;
+        //         rsvp.attending = r.attending;
+        //         rsvp.food = r.food;
+        //         rsvp.consideration = r.consideration;
+        //         console.log(rsvp);
+        //         rsvp.save(function (err) {
+        //             if (err)
+        //                 res.send(err);
+        //             res.json({message: 'RSVP successfully added!'});
+        //         });
+        //     }
+        // })
     });
 
 router.route('/rsvp') //TODO: fix this
