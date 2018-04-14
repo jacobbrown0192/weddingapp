@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import {FormGroup, FormControl, ControlLabel, Col, Row, Button, PageHeader} from 'react-bootstrap';
 import axios from 'axios';
 import DynamicRSVPInputs from "../../../../../RSVPAddPage/components/DynamicRSVPInputs/index";
+import niceware from 'niceware';
 
-class RSVPAddPage extends Component
+const PASSWORD_SEPERATOR = '.';
+
+class RSVPAdminForm extends Component
 {
     constructor(props)
     {
@@ -35,12 +38,12 @@ class RSVPAddPage extends Component
         return rsvp
     }
 
-    createFullRsvp(id)
+    createRsvpDTOwithUser(user)
     {
         let rsvpDTO =
             {
                 rsvp: this.state.rsvp,
-                userid: id,
+                userid: user._id,
                 number: this.state.inputCount
             };
         return rsvpDTO
@@ -55,30 +58,39 @@ class RSVPAddPage extends Component
         event.preventDefault();
         if (this.state.rsvp.length > 0)
         {
-            let autoPassword = this.autoGeneratePassword(); //TODO: Add this in and remove encryption from the users
+            let password = this.autoGeneratePassword();
             if (this.state.password)
             {
-                var user = this.createUser(this.state.password, 1);
-                axios.post('http://localhost:3001/api/signup', user)
-                    .catch(err => {
-                        console.error(err);
-                    })
-                    .then(res => {
-                        let user = res; //TODO: FIX THIS UP, TEST SIGNUP API USER RETURN
-                        let rsvpDTO = this.createFullRsvp(user);
-                        axios.post('http://localhost:3001/api/rsvpadd', rsvpDTO)
-                            .catch(err => {
-                                console.error(err);
-                            });
-                    });
+                password = this.state.password;
             }
+            var user = this.createUser(password, 1);
+            axios.post('http://localhost:3001/api/signup', user)
+                .catch(err => {
+                    console.error(err);
+                })
+                .then(function(res){
+                    let user = res.data;
+                    let rsvpDTO = this.createRsvpDTOwithUser(user);
+                    axios.post('http://localhost:3001/api/rsvpadd', rsvpDTO)
+                        .catch(err => {
+                            console.error(err);
+                        });
+                    this.setState({rsvp:[], inputCount:0, password: '', access: 0});
+                }.bind(this));
         }
-        this.setState({rsvp:[], inputCount:0, password: '', access: 0});
     }
 
     autoGeneratePassword()
     {
-        return 'test' //TODO: Add niceware
+        let passphraseArray = niceware.generatePassphrase(8);
+        var passphrase = "";
+        for (var i = 0, len = passphraseArray.length; i<len; i++){
+            passphrase += passphraseArray[i];
+            if(i+1 !== len) {
+                passphrase += PASSWORD_SEPERATOR;
+            }
+        }
+        return passphrase
     }
 
     createUser(password, access)
@@ -89,7 +101,6 @@ class RSVPAddPage extends Component
         };
         return user;
     }
-
 
     createEmptyRsvp(c)
     {
@@ -122,7 +133,7 @@ class RSVPAddPage extends Component
 
         for (var i = 0; i < this.state.inputCount; i++)
         {
-            inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[i]} userid={this.props.userid} key={i} handleRSVPInputs={this.handleRSVPInputs} />)
+            inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[i]} userid={this.props.userid} key={i} num={i} handleRSVPInputs={this.handleRSVPInputs} />)
         }
         return (
             < div>
@@ -138,6 +149,7 @@ class RSVPAddPage extends Component
                         </Col>
                         <Col sm={10}>
                             <FormControl
+                                placeholder="Leave blank to autogenerate a password"
                                 class="form-control"
                                 name="password"
                                 label="password"
@@ -171,4 +183,4 @@ class RSVPAddPage extends Component
     }
 }
 
-export default RSVPAddPage;
+export default RSVPAdminForm;

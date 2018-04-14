@@ -15,7 +15,7 @@ class RSVPBox extends Component {
 
     loadRSVPFromServer()
     {
-        let id = {userid: this.props.userid};
+        let id = {userid: this.props.userid}; //TODO: FIX USER ID, CURRENTLY SETS YOU TO LASTEST after adding through admin
         if(this.props.userid !== '') {
             axios.post(this.props.url, id)
                 .then(res => {

@@ -21,16 +21,14 @@ class UsersBox extends Component {
             {
                 this.setState({data:res.data });
             });
-        console.log(this.state.data);
     }
 
     handleUserDelete(id)
     {
         //TODO: When deleting user delete RSVP stuffs
-        axios.delete(`${this.props.url}/${id}`)
+        axios.delete(`http://localhost:3001/api/user/${id}`)
             .then(res=>
             {
-                console.log('User deleted');
             })
     }
 

@@ -5,7 +5,7 @@ import style from './style';
 
 class UserList extends Component {
     render() {
-        let commentNodes = this.props.data.map(user => {
+        let userNodes = this.props.data.map(user => {
             return (
                 <User
                     uniqueId={ user['_id'] }
@@ -18,7 +18,7 @@ class UserList extends Component {
         })
         return (
             <div style={ style.commentList }>
-                { commentNodes }
+                { userNodes }
             </div>
         )
     }

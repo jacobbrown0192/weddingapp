@@ -14,6 +14,8 @@ class RSVPAdminBox extends Component
         this.loadRSVPFromServer = this.loadRSVPFromServer.bind(this);
     }
 
+    //TODO: Refactor so that it gets users and then the RSVPs associated with them.
+    // This way you can delete and add RSVPs to users even if they have zreo current rsvps
     loadRSVPFromServer()
     {
         axios.get(this.props.url)

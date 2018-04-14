@@ -61,10 +61,12 @@ class RSVPAdminItemBox extends Component {
     {
         for(let d of data)
         {
-            if(parseInt(d.id) !== this.state.userid) {
-                this.setState({userid: parseInt(d.id)});
+            if(d) {
+                if (parseInt(d.id) !== this.state.userid) {
+                    this.setState({userid: parseInt(d.id)});
+                }
+                break;
             }
-            break;
         }
     }
 
