@@ -12,7 +12,7 @@ class YourStories extends Component
                 <div>
                     <h1>Write down some stories about either of us!</h1>
                 </div>
-                <CommentBox url='http://localhost:3001/api/comments' pollInterval={2000} power={false}/>
+                <CommentBox url='http://localhost:3001/api/comments' pollInterval={2000} power={false} auth={this.props.Auth}/>
             </div>
         )
     }

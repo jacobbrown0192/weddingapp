@@ -17,6 +17,7 @@ import RegisterPage from "../../scenes/RegisterPage/index";
 import Users from "../../scenes/Users/index";
 import RSVPAddPage from "../../scenes/RSVPAddPage/index";
 import RSVPAdmin from "../../scenes/RSVPAdmin/index";
+import {PrivateRoute} from "../PrivateRoute/index";
 
 
 let UserToken = require('../../utils/UserToken');
@@ -82,7 +83,11 @@ class Main extends Component
                     <AuthRoute path='/rsvp' component={RSVP} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise} test={this.handleLoginAuth}/>
                     <Route path='/upload' component={UploadPhotos}/>
                     <Route path='/ourstory' component={OurStory}/>
-                    <Route path='/yourstories' component={YourStories}/>
+                    <Route path='/yourstories'
+                           render={(props) => (
+                               <YourStories Auth={this.state.auth}/>
+                               )}
+                    />
                     <Route path='/schedule' component={Schedule}/>
                     <Route path='/gallery' component={Gallery}/>
                     <Route path='/faqs' component={FAQs}/>
@@ -93,11 +98,11 @@ class Main extends Component
                             <SignInPage {...routeProps} userid={this.state.user} Auth={this.state.auth} AuthHandler={this.handleAuth.bind(this)} />
                         )}
                     />
-                    <AuthRoute path='/signup' component={RegisterPage} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise} test={this.handleLoginAuth}/>
-                    <AuthRoute path='/users' component={Users} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise}  test={this.handleLoginAuth}/>
+                    <PrivateRoute path='/signup' component={RegisterPage} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise} test={this.handleLoginAuth}/>
+                    <PrivateRoute path='/users' component={Users} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise}  test={this.handleLoginAuth}/>
                     <Route path='/logout' />
-                    <AuthRoute path='/rsvpadd' component={RSVPAddPage} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise}  test={this.handleLoginAuth}/>
-                    <Route path='/rsvpadmin' component={RSVPAdmin}/>
+                    <PrivateRoute path='/rsvpadd' component={RSVPAddPage} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise}  test={this.handleLoginAuth}/>
+                    <PrivateRoute path='/rsvpadmin' component={RSVPAdmin} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise}  test={this.handleLoginAuth}/>
                     <Route path='*' component={PageNotFound} />
                 </Switch>
             </main>

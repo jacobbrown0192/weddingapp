@@ -8,12 +8,13 @@ import style from './style';
 class CommentBox extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: [] };
+        this.state = { data: [], power: false };
         this.loadCommentsFromServer =
             this.loadCommentsFromServer.bind(this);
         this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
         this.handleCommentDelete = this.handleCommentDelete.bind(this);
         this.handleCommentUpdate = this.handleCommentUpdate.bind(this);
+        this.isPower = this.isPower.bind(this);
     }
 
     loadCommentsFromServer()
@@ -58,9 +59,18 @@ class CommentBox extends Component {
             })
     }
 
+    isPower()
+    {
+        if (this.props.auth > 1)
+        {
+            this.setState({power: true})
+        }
+    }
+
     componentDidMount()
     {
         this.loadCommentsFromServer();
+        this.isPower();
         setInterval(this.loadCommentsFromServer, this.props.pollInterval);
     }
 
@@ -72,7 +82,7 @@ class CommentBox extends Component {
                     onCommentDelete={this.handleCommentDelete}
                     onCommentUpdate={this.handleCommentUpdate}
                     data={ this.state.data }
-                    power={ this.props.power }/>
+                    power={ this.state.power }/>
                 <CommentForm onCommentSubmit={ this.handleCommentSubmit }/>
             </div>
         )
