@@ -12,7 +12,7 @@ class RSVPAdmin extends Component
                 <PageHeader>
                     Welcome to the admin page. You must be special to be here
                 </PageHeader>
-                <RSVPAdminBox url='http://localhost:3001/api/rsvp' pollInterval={2000} power={false}/>
+                <RSVPAdminBox url='/api/rsvp' pollInterval={2000} power={false}/>
             </div>
         )
     }

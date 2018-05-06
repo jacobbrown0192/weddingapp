@@ -9,7 +9,7 @@ class RSVP extends Component
         return(
             <div>
                 <PageHeader>You can RSVP here!</PageHeader>
-                <RSVPBox url='http://localhost:3001/api/rsvp' userid={this.props.userid} pollInterval={2000} />
+                <RSVPBox url='/api/rsvp' userid={this.props.userid} pollInterval={2000} />
             </div>
         )
     }

@@ -4,7 +4,7 @@ import axios from 'axios';
 //user here is just an id, will be updated to token later
 async function getUserFromToken(user)
 {
-    let url = `http://localhost:3001/api/user/${user}`;
+    let url = `/api/user/${user}`;
     let data = await axios.get(url)
     return data;
 }

@@ -23,7 +23,7 @@ class SignInPage extends Component
     onSave(event) {
         event.preventDefault();
         var user = this.createUser(this.state.password, 0);
-        axios.post('http://localhost:3001/api/signin', user)
+        axios.post('/api/signin', user)
             .then(res =>
             {
                 this.setState({data:res.data });

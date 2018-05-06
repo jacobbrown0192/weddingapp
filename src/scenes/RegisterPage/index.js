@@ -22,7 +22,7 @@ class RegisterPage extends Component
         if (this.state.password)
         {
             var user = this.createUser(this.state.password, 1);
-            axios.post('http://localhost:3001/api/signup', user)
+            axios.post('/api/signup', user)
                 .catch(err => {
                     console.error(err);
                 })

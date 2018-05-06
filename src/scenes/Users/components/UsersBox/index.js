@@ -26,7 +26,7 @@ class UsersBox extends Component {
     handleUserDelete(id)
     {
         //TODO: When deleting user delete RSVP stuffs
-        axios.delete(`http://localhost:3001/api/user/${id}`)
+        axios.delete(`/api/user/${id}`)
             .then(res=>
             {
             })

@@ -8,7 +8,7 @@ class RSVPAdminItemBox extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {data: [], url: 'http://localhost:3001/api/rsvp', lastIndex: 0, userid: -1};
+        this.state = {data: [], url: '/api/rsvp', lastIndex: 0, userid: -1};
         this.handleRsvpDelete = this.handleRsvpDelete.bind(this);
         this.handleRSVPUpdate = this.handleRSVPUpdate.bind(this);
         this.loadRSVPFromServer = this.loadRSVPFromServer.bind(this);

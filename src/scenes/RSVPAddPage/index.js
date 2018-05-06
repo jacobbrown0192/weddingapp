@@ -57,7 +57,7 @@ class RSVPAddPage extends Component
         if (this.state.rsvp.length > 0)
         {
             var rsvpDTO = this.createFullRsvp();
-            axios.post('http://localhost:3001/api/rsvpadd', rsvpDTO)
+            axios.post('/api/rsvpadd', rsvpDTO)
                 .catch(err => {
                     console.error(err);
                 })

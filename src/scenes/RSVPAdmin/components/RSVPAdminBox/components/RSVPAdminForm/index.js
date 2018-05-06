@@ -64,14 +64,14 @@ class RSVPAdminForm extends Component
                 password = this.state.password;
             }
             var user = this.createUser(password, 1);
-            axios.post('http://localhost:3001/api/signup', user)
+            axios.post('/api/signup', user)
                 .catch(err => {
                     console.error(err);
                 })
                 .then(function(res){
                     let user = res.data;
                     let rsvpDTO = this.createRsvpDTOwithUser(user);
-                    axios.post('http://localhost:3001/api/rsvpadd', rsvpDTO)
+                    axios.post('/api/rsvpadd', rsvpDTO)
                         .catch(err => {
                             console.error(err);
                         });

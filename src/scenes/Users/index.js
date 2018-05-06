@@ -12,7 +12,7 @@ class Users extends Component
                 <div>
                     <h1>Registered People</h1>
                 </div>
-                <UsersBox url='http://localhost:3001/api/users' pollInterval={2000} power={true}/>
+                <UsersBox url='/api/users' pollInterval={2000} power={true}/>
             </div>
         )
     }
