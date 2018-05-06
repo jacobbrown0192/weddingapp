@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {FormGroup, FormControl, ControlLabel, Col, Row, Button, PageHeader} from 'react-bootstrap';
 import axios from 'axios';
 import DynamicRSVPInputs from "../../../../../RSVPAddPage/components/DynamicRSVPInputs/index";
-import niceware from 'niceware';
+import niceware from '../../../../../../utils/niceware/lib/main';
 
 const PASSWORD_SEPERATOR = '.';
 
