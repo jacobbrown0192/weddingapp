@@ -18,6 +18,8 @@ import Users from "../../scenes/Users/index";
 import RSVPAddPage from "../../scenes/RSVPAddPage/index";
 import RSVPAdmin from "../../scenes/RSVPAdmin/index";
 import {PrivateRoute} from "../PrivateRoute/index";
+import {Grid, Row} from "react-bootstrap";
+import BridesmaidsGroomsmen from "../../scenes/BridesmaidsGroomsmen/index";
 
 
 let UserToken = require('../../utils/UserToken');
@@ -77,7 +79,7 @@ class Main extends Component
     render()
     {
         return(
-            <main>
+            <Grid>
                 <Switch>
                     <Route exact path='/' component={Home}/>
                     <AuthRoute path='/rsvp' component={RSVP} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise} test={this.handleLoginAuth}/>
@@ -91,7 +93,12 @@ class Main extends Component
                     <Route path='/schedule' component={Schedule}/>
                     <Route path='/gallery' component={Gallery}/>
                     <Route path='/faqs' component={FAQs}/>
-                    <Route path='/songrequest' component={SongRequests}/>
+                    <Route path='/bridesmaidsgroomsmen' component={BridesmaidsGroomsmen}/>
+                    <Route path='/songrequest'
+                           render={(props) => (
+                               <SongRequests Auth={this.state.auth}/>
+                           )}
+                    />
                     <Route
                         path="/login"
                         render={(routeProps) => (
@@ -105,7 +112,7 @@ class Main extends Component
                     <PrivateRoute path='/rsvpadmin' component={RSVPAdmin} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise}  test={this.handleLoginAuth}/>
                     <Route path='*' component={PageNotFound} />
                 </Switch>
-            </main>
+            </Grid>
         )
     }
 }

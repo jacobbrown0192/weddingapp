@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import style from './style';
 import marked from 'marked';
+import {Grid, Row} from "react-bootstrap";
 class User extends Component {
     constructor(props) {
         super(props);
@@ -28,9 +28,9 @@ class User extends Component {
     modifyComment() {
         if (this.props.power) {
             return (
-                <div>
-                    <a style={style.deleteLink} href='#' onClick={this.deleteUser}>delete</a>
-                </div>
+                <Grid>
+                    <a href='#' onClick={this.deleteUser}>delete</a>
+                </Grid>
             )
         }
         else {
@@ -42,11 +42,11 @@ class User extends Component {
 
     render() {
         return (
-            <div style={style.comment}>
+            <Row>
                 <h3>{this.props.uniqueId}</h3>
                 <span dangerouslySetInnerHTML={this.rawMarkup()}/>
                 {this.modifyComment()}
-            </div>
+            </Row>
         );
     }
 }

@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App.js';
 
-const el =  document.getElementById('root');
+const el =  document.getElementById('main_container');
 
 ReactDOM.render((
     <BrowserRouter>

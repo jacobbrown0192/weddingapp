@@ -1,6 +1,5 @@
 //CommentForm.js
-import React, { Component } from 'react';
-import style from './style';
+import React, {Component} from 'react';
 
 class CommentForm extends Component {
     constructor(props) {
@@ -48,25 +47,32 @@ class CommentForm extends Component {
 
     render() {
         return (
-            <form style={ style.commentForm } onSubmit={ this.handleSubmit }>
-                <input
-                    type='text'
-                placeholder='Your name…'
-                style={ style.commentFormAuthor}
-                  value={ this.state.author }
-                  onChange={ this.handleAuthorChange } />
-        <input
-            type='text'
-    placeholder='Say something…'
-    style={ style.commentFormText}
-    value={ this.state.text }
-    onChange={ this.handleTextChange } />
-        <input
-            type='submit'
-    style={ style.commentFormPost }
-    value='Post' />
-    </form>
-    )
+            <form onSubmit={ this.handleSubmit }>
+                <div className="form_section">
+                    <div className="form_row_full">
+                        <label>NAME</label>
+                        <input
+                            type='text'
+                            placeholder='Your name…'
+                            className="form_input required"
+                            value={ this.state.author }
+                            onChange={ this.handleAuthorChange } />
+                    </div>
+                    <div className="form_row_full">
+                        <label>MESSAGE</label>
+                        <input
+                            type='text'
+                            placeholder='Tell us a story!'
+                            className="form_input required"
+                            value={ this.state.text }
+                            onChange={ this.handleTextChange } />
+                    </div>
+                    <div className="form_row_full">
+                        <input type="submit" name="submit" className="form_submit_contact" value="POST" />
+                    </div>
+                </div>
+            </form>
+        )
     }
 }
 export default CommentForm;

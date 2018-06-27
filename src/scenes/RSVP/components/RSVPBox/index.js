@@ -1,8 +1,7 @@
 //CommentBox.js
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import RSVPList from './components/RSVPList/index';
-import style from './style';
 
 class RSVPBox extends Component {
     constructor(props) {
@@ -41,13 +40,15 @@ class RSVPBox extends Component {
 
     render() {
         return (
-            <div>
-                <h2>RSVP:</h2>
+            <div className="page_content">
+                <div className="full_width_centered">
                 <RSVPList
                     onRSVPUpdate={this.handleRSVPUpdate}
                     data={ this.state.data }
                     power={ this.props.power }
                     userid={ this.props.userid }/>
+                <div className="clear"></div>
+                </div>
             </div>
         )
     }

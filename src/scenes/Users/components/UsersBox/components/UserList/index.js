@@ -1,7 +1,7 @@
 //CommentList.js
 import React, { Component } from 'react';
 import User from './components/User/index';
-import style from './style';
+import {Grid} from "react-bootstrap";
 
 class UserList extends Component {
     render() {
@@ -17,9 +17,9 @@ class UserList extends Component {
             )
         })
         return (
-            <div style={ style.commentList }>
+            <Grid>
                 { userNodes }
-            </div>
+            </Grid>
         )
     }
 }

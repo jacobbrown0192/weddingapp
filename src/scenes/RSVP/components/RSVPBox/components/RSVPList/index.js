@@ -1,7 +1,6 @@
 //CommentList.js
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import RSVP from './components/RSVP/index';
-import style from './style';
 
 class RSVPList extends Component {
     render() {
@@ -22,7 +21,8 @@ class RSVPList extends Component {
             )
         })
         return (
-            <div>
+            <div className="form_content">
+                <h3 className="form_toptitle" id="Note"></h3>
                 <form>
                     { rsvpNodes }
                 </form>

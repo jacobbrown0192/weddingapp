@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import {  Redirect } from 'react-router-dom';
+import PageHeader from "../../components/PageHeader/index";
+
+const title = "LOADING";
+const header_text = "Love is friendship that has caught fire. It is quiet understanding, sharing and forgiving. <br />\n" +
+    "It is loyalty through good and bad times. It settles for less than perfection<br /> and makes allowances for human weaknesses.\n" +
+    "<br /> <em>\"Répondez s'il vous plaît.\"</em>";
 
 class Waiting extends Component
 {
@@ -56,9 +62,7 @@ class Waiting extends Component
         }
         return(
             <div>
-                <div>
-                    <h1>Waiting Around</h1>
-                </div>
+                <PageHeader title={title} header_text={header_text}/>
             </div>
         )
     }

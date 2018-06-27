@@ -1,9 +1,8 @@
 //CommentBox.js
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import CommentList from './components/CommentList/index';
 import CommentForm from './components/CommentForm/index';
-import style from './style';
 
 class CommentBox extends Component {
     constructor(props) {
@@ -76,14 +75,16 @@ class CommentBox extends Component {
 
     render() {
         return (
-            <div style={ style.commentBox }>
-                <h2>Comments:</h2>
-                <CommentList
-                    onCommentDelete={this.handleCommentDelete}
-                    onCommentUpdate={this.handleCommentUpdate}
-                    data={ this.state.data }
-                    power={ this.state.power }/>
-                <CommentForm onCommentSubmit={ this.handleCommentSubmit }/>
+            <div className="page_content">
+                <div className="full_width_centered">
+                    <CommentList
+                        onCommentDelete={this.handleCommentDelete}
+                        onCommentUpdate={this.handleCommentUpdate}
+                        data={ this.state.data }
+                        power={ this.state.power }/>
+                    <CommentForm onCommentSubmit={ this.handleCommentSubmit }/>
+                    <div className="clear"></div>
+                </div>
             </div>
         )
     }

@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
-import CountDownClock from "./componenets/CountDownClock/index";
-import {Row} from 'react-bootstrap';
+import TitleContainer from "./componenets/TitleContainer/index";
+import SliderContainer from "./componenets/SliderContainer/index";
+import AboutContent from "./componenets/AboutContent/index";
+import CarouselContrainer from "./componenets/CarouselContainer/index";
+import '../../style.css';
+import '../../colors/blue.css';
+import CountdownContainer from "./componenets/CountdownContainer/index";
 
 class Home extends Component
 {
@@ -8,17 +13,17 @@ class Home extends Component
     constructor(props)
     {
         super(props);
-        this.state = { deadline: 'July 19 2019 13:00:00 GMT-0330', remaining: '', intervalID: 0}
     }
 
     render()
     {
         return(
             <div>
-                <Row>
-                    <h1>Welcome to Jacob and Kaitlins Wedding Website!</h1>
-                </Row>
-                <CountDownClock deadline={this.state.deadline} />
+                <TitleContainer/>
+                <SliderContainer/>
+                <CountdownContainer/>
+                <AboutContent/>
+                <CarouselContrainer/>
             </div>
         )
     }

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import PageHeader from "../../components/PageHeader/index";
 
 let userToken = require('../../utils/UserToken');
 let storeToken = userToken.storeToken;
+
+const title = "LOGIN";
+const header_text = "Enter your RSVP code here now to RSVP!";
 
 class SignInPage extends Component
 {
@@ -61,19 +65,35 @@ class SignInPage extends Component
 
         return (
             < div>
-                < form>
-                    < input
-                        name="password"
-                        label="password"
-                        type="text"
-                        value={this.state.password}
-                        onChange={this.onChange}/>
-
-                    < input
-                        type="submit"
-                        className="btn btn-primary"
-                        onClick={this.onSave}/>
-                </form>
+                <PageHeader title={title} header_text={header_text} />
+                <div className="page_content">
+                    <div className="full_width_centered">
+                        <div className="form_content">
+                            <h3 className="form_toptitle" id="Note"></h3>
+                            < form>
+                                <div className="form_section">
+                                    <h3 className="form_subtitle">ENTER YOUR RSVP CODE BELLOW:</h3>
+                                <div className="form_row_full">
+                                    < input
+                                        name="password"
+                                        label="password"
+                                        type="text"
+                                        className="form_input required"
+                                        value={this.state.password}
+                                        onChange={this.onChange}/>
+                                </div>
+                                <div className="form_row">
+                                < input
+                                    type="submit"
+                                    className="form_submit_contact"
+                                    onClick={this.onSave}/>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="clear"></div>
+                    </div>
+                </div>
             </div>
         );
     }

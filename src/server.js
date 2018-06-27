@@ -4,6 +4,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Comment = require('./model/comments');
+var Song = require('./model/song');
 var User = require('./model/user');
 var RSVP = require('./model/rsvp');
 
@@ -78,6 +79,57 @@ router.route('/comments/:comment_id')
     .delete(function(req, res)
     {
         Comment.remove({_id: req.params.comment_id }, function(err, comment)
+        {
+            if (err)
+                res.send(err);
+            res.json({message: 'User has been deleted'})
+        })
+    });
+
+router.route('/songs')
+    .get(function(req,res)
+    {
+        Song.find(function(err, songs)
+        {
+            if (err)
+                res.send(err);
+            res.json(songs)
+        }).where('hidden').equals('false')
+    })
+    .post(function(req, res)
+    {
+            var song = new Song();
+            song.artist = req.body.artist;
+            song.title = req.body.title;
+            song.hidden = req.body.hidden;
+            song.votes = req.body.votes;
+            song.user_id = 'unused'
+            song.save(function (err)
+            {
+                if (err)
+                    res.send(err);
+                res.json({message: 'User successfully added!'});
+            }
+        );
+    });
+
+router.route('/songs/:song_id')
+    .put(function(req, res) {
+        Song.findById(req.params.song_id, function (err, song) {
+            if (err)
+                res.send(err);
+            (res.body.artist) ? song.artist = req.body.artist : null;
+            (res.body.title) ? song.title = req.body.title : null;
+            song.save(function (err) {
+                if (err)
+                    res.send(err);
+                res.json({message: 'User has been updated'});
+            });
+        });
+    })
+    .delete(function(req, res)
+    {
+        Song.remove({_id: req.params.song_id }, function(err, song)
         {
             if (err)
                 res.send(err);

@@ -3,6 +3,9 @@ import './styles/App.css';
 
 import Header from './components/Header';
 import Main from './components/Main';
+import {Grid} from "react-bootstrap";
+import Footer from "./components/Footer/index";
+import HomeBottom from "./components/HomeBottom/index";
 
 
 class App extends Component
@@ -10,9 +13,11 @@ class App extends Component
     render()
     {
         return(
-            <div className="App-border">
+            <div>
                 <Header />
                 <Main />
+                <HomeBottom/>
+                <Footer/>
             </div>
         )
     }

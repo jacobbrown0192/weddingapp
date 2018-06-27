@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import UsersBox from './components/UsersBox';
+import {Grid, Row} from "react-bootstrap";
 
 //TODO: Update to bootstrap
 class Users extends Component
@@ -8,12 +9,12 @@ class Users extends Component
     render()
     {
         return(
-            <div>
-                <div>
+            <Grid>
+                <Row>
                     <h1>Registered People</h1>
-                </div>
+                </Row>
                 <UsersBox url='/api/users' pollInterval={2000} power={true}/>
-            </div>
+            </Grid>
         )
     }
 }

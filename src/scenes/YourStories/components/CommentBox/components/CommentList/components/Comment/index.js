@@ -1,7 +1,11 @@
 //index.js
-import React, { Component } from 'react';
-import style from './style';
+import React, {Component} from 'react';
 import marked from 'marked';
+
+const updateStyle = {
+    paddingRight: "20px"
+};
+
 class Comment extends Component {
     constructor(props) {
         super(props);
@@ -61,9 +65,9 @@ class Comment extends Component {
     modifyComment() {
         if (this.props.power) {
             return (
-                <div>
-                    <a style={style.updateLink} href='#' onClick={this.updateComment}>update</a>
-                    <a style={style.deleteLink} href='#' onClick={this.deleteComment}>delete</a>
+                <div className="reply">
+                    <a style={updateStyle} className="comment-reply-link" href='#' onClick={this.updateComment}>Update</a>
+                    <a className="comment-reply-link" href='#' onClick={this.deleteComment}>Delete</a>
                 </div>
             )
         }
@@ -76,33 +80,46 @@ class Comment extends Component {
 
     render() {
         return (
-            <div style={style.comment}>
-                <h3>{this.props.author}</h3>
-                <span dangerouslySetInnerHTML={this.rawMarkup()}/>
+            <li>
+                <div>
+                    <div className="comment-author vcard">
+                        <cite className="fn">{this.props.author}</cite>
+                    </div>
+                <p dangerouslySetInnerHTML={this.rawMarkup()}/>
                 {this.modifyComment()}
                 {
                     (this.state.toBeUpdated && this.props.power)
                         ? (
                             <form onSubmit={this.handleCommentUpdate}>
-                                <input
-                                    type="text"
-                                    placeholder="Update Name"
-                                    style={style.commentFormAuthor}
-                                    onChange={this.handleAuthorChange}/>
-                                <input
-                                    type="text"
-                                    placeholder="Update Comment"
-                                    style={style.commentFormText}
-                                    onChange={this.handleTextChange}/>
-                                <input
-                                    type="submit"
-                                    style={style.commentFormPost}
-                                    value="Update"/>
+                                <div className="form_section">
+                                    <div className="form_row_full">
+                                        <label>NAME</label>
+                                        <input
+                                            type='text'
+                                            placeholder='Your name…'
+                                            className="form_input required"
+                                            value={ this.state.author }
+                                            onChange={ this.handleAuthorChange } />
+                                    </div>
+                                    <div className="form_row_full">
+                                        <label>MESSAGE</label>
+                                        <input
+                                            type='text'
+                                            placeholder='Tell us a story!'
+                                            className="form_input required"
+                                            value={ this.state.text }
+                                            onChange={ this.handleTextChange } />
+                                    </div>
+                                    <div className="form_row_full">
+                                        <input type="submit" name="submit" className="form_submit_contact" value="POST" />
+                                    </div>
+                                </div>
                             </form>
                         )
                         : null
                 }
-            </div>
+                </div>
+            </li>
         );
     }
 }

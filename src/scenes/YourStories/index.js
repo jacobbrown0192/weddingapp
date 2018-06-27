@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 
 import CommentBox from './components/CommentBox';
+import PageHeader from "../../components/PageHeader/index";
 
-//TODO:Update to bootstrap
+const title = "YOUR STORIES";
+const header_text = "We didn't know we were making memories, <br/> We just knew we were having fun.";
+
 class YourStories extends Component
 {
     render()
     {
         return(
             <div>
-                <div>
-                    <h1>Write down some stories about either of us!</h1>
-                </div>
+                <PageHeader title={title} header_text={header_text}/>
                 <CommentBox url='/api/comments' pollInterval={2000} power={false} auth={this.props.Auth}/>
             </div>
         )

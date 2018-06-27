@@ -1,7 +1,6 @@
 //CommentList.js
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Comment from './components/Comment/index';
-import style from './style';
 
 class CommentList extends Component {
     render() {
@@ -19,9 +18,9 @@ class CommentList extends Component {
             )
         })
         return (
-            <div style={ style.commentList }>
+            <ol className="commentlist">
                 { commentNodes }
-            </div>
+            </ol>
         )
     }
 }
