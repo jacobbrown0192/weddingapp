@@ -97,7 +97,7 @@ class Main extends Component
                     <Route path='/schedule' component={Schedule}/>
                     <Route path='/gallery' component={Gallery}/>
                     <Route path='/faqs' component={FAQs}/>
-                    <Route path='/bridesmaidsgroomsmen' component={BridesmaidsGroomsmen}/>
+                    <Route path='/bridalparty' component={BridesmaidsGroomsmen}/>
                     <Route path='/songrequest'
                            render={(props) => (
                                <SongRequests Auth={this.state.auth}/>

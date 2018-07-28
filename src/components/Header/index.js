@@ -17,7 +17,7 @@ class Header extends Component
                         <li><Link to='/'>HOME</Link></li>
                         <li><Link to='/rsvp'>RSVP</Link></li>
                         <li><Link to='/faqs'>FAQ</Link></li>
-                        <li><Link to='/bridesmaidsgroomsmen'>BRIDAL PARTY</Link></li>
+                        <li><Link to='/bridalparty'>BRIDAL PARTY</Link></li>
                         <li><Link to='/songrequest'>SONG REQUESTS</Link></li>
                         <li><Link to='/yourstories'>TELL US A STORY</Link></li>
                     </ul>
@@ -27,7 +27,7 @@ class Header extends Component
                         <li><Link to='/'>HOME</Link></li>
                         <li><Link to='/rsvp'>RSVP</Link></li>
                         <li><Link to='/faqs'>FAQ</Link></li>
-                        <li><Link to='/bridesmaidsgroomsmen'>BRIDAL PARTY</Link></li>
+                        <li><Link to='/bridalparty'>BRIDAL PARTY</Link></li>
                         <li><Link to='/songrequest'>SONG REQUESTS</Link></li>
                         <li><Link to='/yourstories'>TELL US A STORY</Link></li>
                     </ul>

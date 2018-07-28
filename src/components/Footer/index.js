@@ -31,7 +31,7 @@ class Footer extends Component
                             <li><Link to='/#top'>HOME</Link></li>
                             <li><Link to='/rsvp#top'>RSVP</Link></li>
                             <li><Link to='/faqs#faq'>FAQ</Link></li>
-                            <li><Link to='/bridesmaidsgroomsmen#top'>BRIDAL PARTY</Link></li>
+                            <li><Link to='/bridalparty#top'>BRIDAL PARTY</Link></li>
                             <li><Link to='/songrequest#top'>SONG REQUESTS</Link></li>
                             <li><Link to='/yourstories#top'>TELL US A STORY</Link></li>
                         </ul>

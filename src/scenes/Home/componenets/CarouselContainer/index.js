@@ -58,7 +58,7 @@ class CarouselContrainer extends Component
             <div className="carousel_container">
                 <div className="carousel_container_image">
                     <div className="full_width_carousel">
-                        <h2>OUR BRIDESMAIDS AND GROOMSMEN</h2>
+                        <h2>OUR BRIDAL PARTY</h2>
                         <OwlCarousel ref="car" options={options} >
                             <div className="left14">
                                 <img className="wh-245" src={josh} alt="" title="" /><h3>JOSHUA BARRETT</h3>
@@ -82,7 +82,7 @@ class CarouselContrainer extends Component
                             <div className="left14"><img className="wh-245" src={kayla} alt="" title="" /><h3>KAYLA CHUBBS</h3></div>
                         </OwlCarousel>
 
-                        <div className="view_all_carousel"><Link to="/bridesmaidsgroomsmen">VIEW ALL BRIDESMAIDS AND GROOMSMEN</Link></div>
+                        <div className="view_all_carousel"><Link to="/bridalparty">LEARN MORE ABOUT OUR BRIDAL PARTY</Link></div>
                     </div>
                 </div>
             </div>
