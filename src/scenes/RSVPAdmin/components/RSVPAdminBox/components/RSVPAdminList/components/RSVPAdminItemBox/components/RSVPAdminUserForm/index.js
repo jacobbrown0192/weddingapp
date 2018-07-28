@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import {FormGroup, FormControl, ControlLabel, Col, Row, Button, PageHeader} from 'react-bootstrap';
+import React, {Component} from 'react';
 import axios from 'axios';
 import DynamicRSVPInputs from "../../../../../../../../../RSVPAddPage/components/DynamicRSVPInputs/index";
 
@@ -76,7 +75,7 @@ class RSVPAdminUserForm extends Component
         let rsvp = {
             num: c,
             name: '',
-            attending: false,
+            attending: 0,
             food: 'chicken',
             consideration: ''
         };
@@ -117,38 +116,40 @@ class RSVPAdminUserForm extends Component
             inputs.push(<DynamicRSVPInputs rsvpValues={this.state.rsvp[this.state.lastIndex + i]} userid={this.props.userid} key={this.state.lastIndex + i} num={this.state.lastIndex + i} handleRSVPInputs={this.handleRSVPInputs} />)
         }
         return (
-            < div>
-                < form class = "form-group">
-                    <FormGroup>
+            <div className="form_content">
+                < form>
+                    <div className="form_section">
                         {inputs}
-                    </FormGroup>
 
-                    <Col sm={1}>
-                        <Button
+                        <div className="form_row">
+                            <input
                             bsStyle="primary"
                             type="button"
+                            value="+"
+                            className="form_submit_contact"
                             onClick={this.addInput}>
-                            +
-                        </Button>
-                    </Col>
-                    <Col sm={1}>
-                        < Button
+                            </input>
+                        </div>
+                        <div className="form_row">
+                            <input
                             bsStyle="primary"
                             type="submit"
+                            value="Submit"
+                            className="form_submit_contact"
                             onClick={this.onSave}>
-                            Submit
-                        </Button>
-                    </Col>
-                    <Col sm={1}>
-                        < Button
+                        </input>
+                    </div>
+                        <div className="form_row">
+                            <input
                             bsStyle="primary"
                             type="submit"
+                            value="Delete"
+                            className="form_submit_contact"
                             onClick={this.onDelete}>
-                            Delete
-                        </Button>
-                    </Col>
+                            </input>
+                        </div>
+                    </div>
                 </form>
-                <Row/>
             </div>
         );
     }

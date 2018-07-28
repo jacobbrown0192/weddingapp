@@ -11,7 +11,7 @@ class YourStories extends Component
     render()
     {
         return(
-            <div>
+            <div id="top">
                 <PageHeader title={title} header_text={header_text}/>
                 <CommentBox url='/api/comments' pollInterval={2000} power={false} auth={this.props.Auth}/>
             </div>

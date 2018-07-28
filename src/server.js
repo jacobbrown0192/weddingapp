@@ -141,6 +141,7 @@ router.route('/signin')
     .post(function(req,res)
         {
             let password = req.body.password;
+            let noUser = true;
             User.find(function(err, users)
             {
                 if (err) throw err;
@@ -151,9 +152,13 @@ router.route('/signin')
                         if (isMatch)
                         {
                             console.log('Password123:', isMatch); // -&gt; Password123: true
+                            noUser = false;
                             res.json(user)
                         }
                     });
+                }
+                if (noUser) {
+                    res.json('false')
                 }
             });
         }
@@ -288,4 +293,16 @@ router.route('/rsvp/:rsvp_id')
                 res.send(err);
             res.json({message: 'User has been deleted'})
         })
+    })
+    // this actually uses user_id to get rsvps
+    .get(function(req, res)
+    {
+        console.log(req.params.rsvp_id)
+        RSVP.find(function(err, rsvp)
+    {
+        console.log(err);
+        if (err)
+            res.send(err);
+        res.json(rsvp)
+    }).where('id').equals(req.params.rsvp_id)
     });

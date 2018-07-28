@@ -4,16 +4,22 @@ import OwlCarousel from 'react-owl-carousel2'
 // import 'react-owl-carousel2/lib/styles.css'
 import '../../../../css/carousel.css'
 import test_image from '../../../../images/image_14.jpg'
-import kelsey_matthews from '../../../../images/bridal_party/kelsey_matthews.png'
-import michaela from '../../../../images/bridal_party/michaela.jpg'
+import michaela from '../../../../images/bridal_party/michaela3.jpg'
 import meghan from '../../../../images/bridal_party/meghan.jpeg'
 import jessa from '../../../../images/bridal_party/jessa.jpeg'
 import racheal from '../../../../images/bridal_party/rachela.jpg'
-import nathan from '../../../../images/bridal_party/nathan.jpg'
+import nathan from '../../../../images/bridal_party/nathan2.jpg'
 import jake from '../../../../images/bridal_party/Jake.png'
 import colten from '../../../../images/bridal_party/colten.jpg'
 import ross from '../../../../images/bridal_party/ross2.jpg'
-
+import dylan from '../../../../images/bridal_party/dylan2.jpg'
+import douglas from '../../../../images/bridal_party/douglas2.jpg'
+import josh from '../../../../images/bridal_party/josh4.jpg'
+import zack from '../../../../images/bridal_party/zack3.jpg'
+import karyn from '../../../../images/bridal_party/karyn.jpg'
+import myfanwy from '../../../../images/bridal_party/myfanwy2.jpg'
+import kelsey from '../../../../images/bridal_party/Kelsey.jpg'
+import kayla from '../../../../images/bridal_party/kayla.jpg'
 
 const  options = {
     autoplay: true,
@@ -55,25 +61,25 @@ class CarouselContrainer extends Component
                         <h2>OUR BRIDESMAIDS AND GROOMSMEN</h2>
                         <OwlCarousel ref="car" options={options} >
                             <div className="left14">
-                                <img className="wh-245" src={test_image} alt="" title="" /><h3>JOSHUA BARRETT</h3>
+                                <img className="wh-245" src={josh} alt="" title="" /><h3>JOSHUA BARRETT</h3>
                             </div>
                             <div className="left14">
                                 <img className="wh-245" src={michaela} alt="" title="" /><h3>MICHEALA QUINLAN</h3>
                             </div>
                             <div className="left14"><img className="wh-245" src={nathan} alt="" title="" /><h3>NATHAN DROVER</h3></div>
                             <div className="left14"><img className="wh-245" src={meghan} alt="" title="" /><h3>MEGHAN HUSK</h3></div>
-                            <div className="left14"><img className="wh-245" src={test_image} alt="" title="" /><h3>DOUGLAS MATTHEWS</h3></div>
-                            <div className="left14"><img className="wh-245" src={test_image} alt="" title="" /><h3>KARYN HOWSE</h3></div>
-                            <div className="left14"><img className="wh-245" src={test_image} alt="" title="" /><h3>DYLAN MATTHEWS</h3></div>
-                            <div className="left14"><img className="wh-245" src={test_image} alt="" title="" /><h3>KELSEY BARRETT</h3></div>
-                            <div className="left14"><img className="wh-245" src={test_image} alt="" title="" /><h3>ZACK CHAULK</h3></div>
-                            <div className="left14"><img className="wh-245" src={kelsey_matthews} alt="" title="" /><h3>KELSEY MATTHEWS</h3></div>
-                            <div className="left14"><img className="wh-245" src={colten} alt="" title="" /><h3>COLTEN NORMORE</h3></div>
+                            <div className="left14"><img className="wh-245" src={douglas} alt="" title="" /><h3>DOUGLAS MATTHEWS</h3></div>
+                            <div className="left14"><img className="wh-245" src={kelsey} alt="" title="" /><h3>KELSEY BARRETT</h3></div>
+                            <div className="left14"><img className="wh-245" src={dylan} alt="" title="" /><h3>DYLAN MATTHEWS</h3></div>
+                            <div className="left14"><img className="wh-245" src={karyn} alt="" title="" /><h3>KARYN HOWSE</h3></div>
+                            <div className="left14"><img className="wh-245" src={zack} alt="" title="" /><h3>ZACK CHAULK</h3></div>
                             <div className="left14"><img className="wh-245" src={racheal} alt="" title="" /><h3>RACHEAL SEYMOUR</h3></div>
-                            <div className="left14"><img className="wh-245" src={jake} alt="" title="" /><h3>JACOB PARSONS</h3></div>
+                            <div className="left14"><img className="wh-245" src={colten} alt="" title="" /><h3>COLTEN NORMORE</h3></div>
                             <div className="left14"><img className="wh-245" src={jessa} alt="" title="" /><h3>JESSA VOKEY</h3></div>
+                            <div className="left14"><img className="wh-245" src={jake} alt="" title="" /><h3>JACOB PARSONS</h3></div>
+                            <div className="left14"><img className="wh-245" src={myfanwy} alt="" title="" /><h3>MYFANWY PRICE</h3></div>
                             <div className="left14"><img className="wh-245" src={ross} alt="" title="" /><h3>ROSS MCCLEAN</h3></div>
-                            <div className="left14"><img className="wh-245" src={test_image} alt="" title="" /><h3>MYFANWY PRICE</h3></div>
+                            <div className="left14"><img className="wh-245" src={kayla} alt="" title="" /><h3>KAYLA CHUBBS</h3></div>
                         </OwlCarousel>
 
                         <div className="view_all_carousel"><Link to="/bridesmaidsgroomsmen">VIEW ALL BRIDESMAIDS AND GROOMSMEN</Link></div>

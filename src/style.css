@@ -8,13 +8,21 @@ Last updated:	12 October 2016
 Template:	Wedding Bells HTML,CSS Template
 -------------------------------------------------------------------*/
 /* My Stuff */
+.large-gb h3, .small-gb h3 {
+	padding: 0;
+}
+
+.large-gb p, .small-gb p {
+	text-align: center;
+}
+
 .small-gb-images {
 	height: 250px;
 	width: 250px;
 }
 
 .small-gb {
-	height: 450px;
+	height: 500px;
 	width: 250px;
 }
 
@@ -64,7 +72,7 @@ Template:	Wedding Bells HTML,CSS Template
 	}
 
 	.small-gb {
-		height: 400px;
+		height: 500px;
 		width: 200px;
 	}
 
@@ -112,6 +120,211 @@ Template:	Wedding Bells HTML,CSS Template
 	}
 }
 
+.admin h2 {
+	padding: 0px;
+}
+
+.admin .form_section {
+	padding: 0px;
+}
+.admin .form_row_full {
+	margin-bottom: 10px;
+}
+
+.admin .form_row {
+	margin-bottom: 10px;
+}
+
+.admin .form_section .form_input, .admin .form_section .form_select {
+	height: 20px;
+}
+
+.admin .form_submit_contact {
+	padding: 5px 20px
+}
+
+.admin p {
+	padding: 0;
+	text-align: center;
+	line-height: 45px;
+}
+
+.admin .delete-users {
+	text-align: center;
+}
+
+.full_width_centered a.logout {
+	display: flex;
+	justify-content: center;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+}
+
+.full_width_centered a.users {
+	position: inherit;
+}
+
+span.users {
+	font-size: 200%;
+}
+/*Bootstrap stuff*/
+
+.alert-danger {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.alert-dismissable, .alert-dismissible {
+	padding-right: 35px;
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.alert-dismissable .close, .alert-dismissible .close {
+	position: relative;
+	top: -5px;
+	right: 0px;
+	color: inherit;
+}
+
+button.close {
+	-webkit-appearance: none;
+	padding: 0;
+	cursor: pointer;
+	background: 0 0;
+	border: 0;
+}
+
+.close {
+	float: right;
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	filter: alpha(opacity=20);
+	opacity: .2;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+div.slider_container {
+	height: 600px;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+	.slider-image {
+		height: 600px;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.slider-image {
+		width: 100%;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.carousel_container {
+	/*background:url(images/slider/slide2.jpg) no-repeat center center;*/
+}
+
+.faq-paragraph {
+	text-align: center;
+	font-size: 18px;
+}
+
+.faq-header {
+	padding: 0px;
+}
+
+.bridalparty-story {
+	font-size: 12px;
+	padding: 4px;
+	line-height: 14px;
+}
+
+.registryimage {
+	height: 30%;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 0 0 0;
+}
+
+@media screen and (max-width: 680px) {
+
+	.registryimage {
+		height: 50%;
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 10px 0 0 0;
+	}
+}
+
+.bridegroom-bio{
+	line-height: 20px;
+	padding: 5px;
+	text-align: center;
+}
+
+@media screen and (min-width: 681px) {
+	.mobile_menu {
+		display: none;
+	}
+}
+
+.mobile_menu{
+	width:100%;
+	text-align:center;
+	padding:20px 0 0 0;
+	height: 85px;
+	position: absolute;
+	top: 0px;
+	z-index: 9999;
+	line-height: 2rem;
+}
+.mobile_menu ul{
+	list-style:none;
+	display:inline-block;
+}
+.mobile_menu li{
+	padding:0 10px 0 20px;
+	margin:0px;
+	display:inline-block;
+	font-size:12px;
+	font-weight:800;
+}
+.mobile_menu li a.selected{
+	color:#FFFFFF;
+}
+.mobile_menu li:first-child{
+	background:none;
+}
+.mobile_menu li a:hover{
+	color:#FFFFFF;
+}
 
 /*----------------------------------------------------------------- 
 [Table of Contents]
@@ -686,7 +899,6 @@ span.names_titles{
 	-webkit-transition: opacity 0.7s, -webkit-transform 0.7s;
 }
 .about_pic_container:hover .about_pic img{
-	opacity: 0.5;
 	transform: scale(1.1);
 }
 span.about_picframe{
@@ -748,7 +960,7 @@ a.thumb_read_more:hover{
 /* 5-5. CAROUSEL 	 */
 /*---------------------------*/
 .carousel_container{
-	background:url(images/slider/slide2.jpg) no-repeat center center;
+	/*background:url(images/slider/slide2.jpg) no-repeat center center;*/
 	width:100%;
 	overflow-x: hidden;
 }
@@ -1147,10 +1359,14 @@ img.avatar{
 	height:auto;
 }
 .general_header{
-	background:url(images/header.jpg) no-repeat center center;
+	background:url(images/cover/IMG_8568.jpg) no-repeat center center;
+	background-position: inherit;
+	background-size: 100%;
 }
 .contact_header{
-	background:url(images/header.jpg) no-repeat center center;
+	background:url(images/cover/IMG_8568.jpg) no-repeat center center;
+	background-position: inherit;
+	background-size: 100%;
 }
 .page_header_trans{
 	background:url(images/trans_black.png) repeat;
@@ -1908,7 +2124,7 @@ span.swirl_right_transparent{
 	.full_width_carousel .left14, .full_width_carousel .left14_last{
 	position:relative;
 	margin:auto;
-	margin:0 0 0 40px
+	margin:0 0 20px 40px
 	}
 	.full_width_carousel .left14 h3, .full_width_carousel .left14_last h3{
 	background-color:#c9d170;
@@ -1982,7 +2198,7 @@ span.swirl_right_transparent{
 	width:100%;
 	height:39px;
 	float:left;
-	padding:3px 0;
+
 	margin:0 0 0 0;
 	background-color:#ffffff;
 	border:1px #e8e1d0 solid;

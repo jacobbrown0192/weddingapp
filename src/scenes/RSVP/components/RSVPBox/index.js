@@ -10,6 +10,7 @@ class RSVPBox extends Component {
         this.loadRSVPFromServer =
             this.loadRSVPFromServer.bind(this);
         this.handleRSVPUpdate = this.handleRSVPUpdate.bind(this);
+        this.clearLogin = this.clearLogin.bind(this);
     }
 
     loadRSVPFromServer()
@@ -32,6 +33,12 @@ class RSVPBox extends Component {
             })
     }
 
+    clearLogin()
+    {
+        let data = {access: 0, "_id": -2};
+        this.props.AuthHandler(data);
+    }
+
     componentDidMount()
     {
         this.loadRSVPFromServer();
@@ -47,6 +54,7 @@ class RSVPBox extends Component {
                     data={ this.state.data }
                     power={ this.props.power }
                     userid={ this.props.userid }/>
+                <a href='#' className="thumb_read_more logout" onClick={this.clearLogin}>Log Out</a>
                 <div className="clear"></div>
                 </div>
             </div>

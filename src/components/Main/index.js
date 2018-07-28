@@ -42,6 +42,10 @@ class Main extends Component
     handleAuth(a)
     {
         this.setState({auth: a.access, user: a['_id']});
+        if(a.access === 0)
+        {
+            UserToken.deleteToken()
+        }
     }
 
     handleLoginAuth()
@@ -82,7 +86,7 @@ class Main extends Component
             <Grid>
                 <Switch>
                     <Route exact path='/' component={Home}/>
-                    <AuthRoute path='/rsvp' component={RSVP} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise} test={this.handleLoginAuth}/>
+                    <AuthRoute path='/rsvp' component={RSVP} userid={this.state.user} Auth={this.state.auth} userPromise={this.state.userPromise} test={this.handleLoginAuth} AuthHandler={this.handleAuth.bind(this)}/>
                     <Route path='/upload' component={UploadPhotos}/>
                     <Route path='/ourstory' component={OurStory}/>
                     <Route path='/yourstories'

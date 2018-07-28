@@ -10,7 +10,7 @@ class CountdownContainer extends Component
     constructor(props)
     {
         super(props);
-        this.state = {deadline: 'July 19 2019 13:00:00 GMT-0330', intervalID: 0, diff:{ "years": 2, "months": 7, "days": 0, "hours": 6, "minutes": 29, "seconds": 17, "firstDateWasLater":  false }};
+        this.state = {deadline: 'July 19 2019 14:30:00 GMT-0330', intervalID: 0, diff:{ "years": 2, "months": 7, "days": 0, "hours": 6, "minutes": 29, "seconds": 17, "firstDateWasLater":  false }};
     }
 
     getTimeRemaining()
@@ -42,13 +42,7 @@ class CountdownContainer extends Component
                 <div id="defaultCountdown">
                     <div id="defaultCountdown" className="hasCountdown">
                         <span className="countdown_row countdown_show4">
-                            <span className="countdown_section">
-                                <span className="countdown_amount">
-                                    {this.state.diff.years}
-                                </span>
-                                <br/>Year
-                            </span>
-                            <span className="countdown_section">
+                        <span className="countdown_section">
                                 <span className="countdown_amount">
                                     {this.state.diff.months}
                                 </span>
@@ -66,12 +60,12 @@ class CountdownContainer extends Component
                                 </span>
                                 <br/>Hours
                             </span>
-                            {/*<span className="countdown_section">*/}
-                                {/*<span className="countdown_amount">*/}
-                                    {/*{this.state.diff.minutes}*/}
-                                {/*</span>*/}
-                                {/*<br/>Minutes*/}
-                            {/*</span>*/}
+                            <span className="countdown_section">
+                                <span className="countdown_amount">
+                                    {this.state.diff.minutes}
+                                </span>
+                                <br/>Minutes
+                            </span>
                         </span>
                     </div>
                 </div>

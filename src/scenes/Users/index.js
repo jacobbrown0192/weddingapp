@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import UsersBox from './components/UsersBox';
-import {Grid, Row} from "react-bootstrap";
+import PageHeader from "../../components/PageHeader/index";
 
-//TODO: Update to bootstrap
+const title = "User Codes";
+const header_text = "Welcome to the users page. You must be special to be here";
+
 class Users extends Component
 {
     render()
     {
         return(
-            <Grid>
-                <Row>
-                    <h1>Registered People</h1>
-                </Row>
+            <div className="admin">
+                <PageHeader title = {title} header_text = {header_text}/>
                 <UsersBox url='/api/users' pollInterval={2000} power={true}/>
-            </Grid>
+            </div>
         )
     }
 }

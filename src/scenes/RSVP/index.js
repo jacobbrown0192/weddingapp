@@ -3,18 +3,16 @@ import RSVPBox from './components/RSVPBox'
 import PageHeader from "../../components/PageHeader/index";
 
 const title = "RSVP";
-const header_text = "Love is friendship that has caught fire. It is quiet understanding, sharing and forgiving. <br />\n" +
-    "It is loyalty through good and bad times. It settles for less than perfection<br /> and makes allowances for human weaknesses.\n" +
-    "<br /> <em>\"Répondez s'il vous plaît.\"</em>";
+const header_text = "";
 
 class RSVP extends Component
 {
     render()
     {
         return(
-            <div>
+            <div id="top">
                 <PageHeader title = {title} header_text = {header_text}/>
-                <RSVPBox url='/api/rsvp' userid={this.props.userid} pollInterval={2000} />
+                <RSVPBox url='/api/rsvp' userid={this.props.userid} pollInterval={2000} AuthHandler={this.props.AuthHandler}/>
             </div>
         )
     }

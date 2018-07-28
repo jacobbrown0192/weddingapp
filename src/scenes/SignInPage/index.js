@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import PageHeader from "../../components/PageHeader/index";
+import {Alert} from "react-bootstrap";
 
 let userToken = require('../../utils/UserToken');
 let storeToken = userToken.storeToken;
 
 const title = "LOGIN";
-const header_text = "Enter your RSVP code here now to RSVP!";
+const header_text = "Enter your RSVP code here to RSVP!";
 
 class SignInPage extends Component
 {
     constructor(props)
     {
         super(props);
-        this.state = {password: '', auth: 0, data: [] };
+        this.state = {password: '', auth: 0, data: [], failed: false, show:true};
         this.setState({auth: props.auth});
         this.onChange = this.onChange.bind(this);
         this.onSave = this.onSave.bind(this);
+        this.handleDismiss = this.handleDismiss.bind(this);
     }
 
     onChange(e) {
@@ -30,10 +32,15 @@ class SignInPage extends Component
         axios.post('/api/signin', user)
             .then(res =>
             {
-                this.setState({data:res.data });
-                this.updateAuthData(res.data);
+                if (res.data === 'false')
+                {
+                    this.setState({failed:true})
+                }
+                else {
+                    this.setState({data: res.data});
+                    this.updateAuthData(res.data);
+                }
             });
-        console.log(this.state.data);
     }
 
     updateAuthData(data)
@@ -52,6 +59,22 @@ class SignInPage extends Component
         return user;
     }
 
+    failedLoginWarning()
+    {
+        if (this.state.failed) {
+            return (
+                <Alert bsStyle="danger" onDismiss={this.handleDismiss}>You entered an incorrect code, try again and mind the separators are periods.</Alert>
+            )
+        }
+        else {
+            return null
+        }
+    }
+
+    handleDismiss() {
+        this.setState({ failed: false });
+    }
+
     render() {
 
         const { from } = this.props.location.state || { from: { pathname: '/' } }
@@ -64,11 +87,12 @@ class SignInPage extends Component
         }
 
         return (
-            < div>
+            <div id="top">
                 <PageHeader title={title} header_text={header_text} />
                 <div className="page_content">
                     <div className="full_width_centered">
                         <div className="form_content">
+                            {this.failedLoginWarning()}
                             <h3 className="form_toptitle" id="Note"></h3>
                             < form>
                                 <div className="form_section">

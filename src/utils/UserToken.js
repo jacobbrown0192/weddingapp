@@ -29,4 +29,4 @@ function resetToken()
 
 }
 
-export {getUserFromToken, storeToken, getToken}
+export {getUserFromToken, storeToken, getToken , deleteToken}

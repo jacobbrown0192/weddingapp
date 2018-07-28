@@ -1,11 +1,8 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react'
+import {HashLink as Link} from 'react-router-hash-link';
 import '../../style.css';
 import '../../colors/blue.css';
-import twitter from '../../images/social/twitter.png'
 import facebook from '../../images/social/facebook.png'
-import pintrest from '../../images/social/pinterest.png'
-import google from '../../images/social/google.png'
 import instagram from '../../images/social/instagram.png'
 import weddingIcon from '../../images/icon-bridesmaid.png'
 
@@ -25,21 +22,18 @@ class Footer extends Component
                     <div className="footer_names">JACOB &amp; KAITLIN</div>
                     <div className="footer_socials">
                         <ul>
-                            <li><a href="#"><img src={twitter} alt="" title="" /></a></li>
                             <li><a href="#"><img src={facebook} alt="" title="" /></a></li>
-                            <li><a href="#"><img src={pintrest} alt="" title="" /></a></li>
-                            <li><a href="#"><img src={google} alt="" title="" /></a></li>
                             <li><a href="#"><img src={instagram} alt="" title="" /></a></li>
                         </ul>
                     </div>
                     <nav className="footer_menu">
                         <ul>
-                            <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/faqs'>FAQ</Link></li>
-                            <li><Link to='/schedule'>SCHEDULE</Link></li>
-                            <li><Link to='/songrequest'>SONG REQUESTS</Link></li>
-                            <li><Link to='/rsvp'>RSVP</Link></li>
-                            <li><Link to='/yourstories'>TELL US A STORY</Link></li>
+                            <li><Link to='/#top'>HOME</Link></li>
+                            <li><Link to='/rsvp#top'>RSVP</Link></li>
+                            <li><Link to='/faqs#faq'>FAQ</Link></li>
+                            <li><Link to='/bridesmaidsgroomsmen#top'>BRIDAL PARTY</Link></li>
+                            <li><Link to='/songrequest#top'>SONG REQUESTS</Link></li>
+                            <li><Link to='/yourstories#top'>TELL US A STORY</Link></li>
                         </ul>
                     </nav>
                 </div>

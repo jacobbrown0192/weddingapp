@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './styles/App.css';
 
 import Header from './components/Header';
 import Main from './components/Main';
-import {Grid} from "react-bootstrap";
 import Footer from "./components/Footer/index";
 import HomeBottom from "./components/HomeBottom/index";
 

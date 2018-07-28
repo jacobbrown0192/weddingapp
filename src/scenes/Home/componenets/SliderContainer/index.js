@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import background from '../../../../images/slider/slide1.jpg'
+import background from '../../../../images/cover/IMG_8766.jpg'
 
 let image = {
-    marginLeft: "50%",
-    transform: "translateX(-50%)",
-    maxHeight: "600px"
+
 
 }
 
@@ -20,7 +18,7 @@ class SliderContainer extends Component
             <div className="slider_container">
                 <div className="slider_trans_black"></div>
                 <div style={imageContainer} id="random">
-                    <img style={image} src={background}/>
+                    <img className="slider-image" src={background}/>
                 </div>
             </div>
     )

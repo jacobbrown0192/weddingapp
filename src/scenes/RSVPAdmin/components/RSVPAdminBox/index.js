@@ -50,13 +50,16 @@ class RSVPAdminBox extends Component
 
     render() {
         return (
-            <div>
-                <h2>RSVPs:</h2>
+            <div className="page_content">
+                <div className="full_width_centered">
                 <RSVPAdminList
+                    onRSVPDelete={this.handleRsvpDelete}
                     onRSVPUpdate={this.handleRSVPUpdate}
                     data={ this.state.data }
                     power={ this.props.power }/>
                 <RSVPAdminForm onCommentSubmit={ this.handleCommentSubmit }/>
+                <div className="clear"/>
+                </div>
             </div>
         )
     }

@@ -61,6 +61,7 @@ class RSVPAdminList extends Component {
             return (
                 <RSVPAdminItemBox
                     data={data}
+                    onRSVPDelete={ this.props.onRSVPDelete }
                     onRSVPUpdate={ this.props.onRSVPUpdate }
                     power={this.props.power}>
                 </RSVPAdminItemBox>

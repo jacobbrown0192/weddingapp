@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react'
 import '../../style.css';
 import '../../colors/green.css';
-import twitter from '../../images/icon_twitter.png'
 
 class PageHeader extends Component
 {

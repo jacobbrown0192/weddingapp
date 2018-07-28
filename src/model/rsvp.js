@@ -9,7 +9,7 @@ var RsvpSchema = new Schema({
     id: String,
     num: Number,
     name: String,
-    attending: Boolean,
+    attending: Number,
     food: String,
     consideration: String,
 });

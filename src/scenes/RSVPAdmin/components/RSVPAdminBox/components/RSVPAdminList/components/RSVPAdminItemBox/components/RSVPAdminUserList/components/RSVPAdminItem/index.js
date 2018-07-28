@@ -1,6 +1,5 @@
 //index.js
-import React, { Component } from 'react';
-import {FormGroup, FormControl, ControlLabel, Col, Row, Button} from 'react-bootstrap';
+import React, {Component} from 'react';
 
 
 class RSVPAdminItem extends Component {
@@ -11,7 +10,7 @@ class RSVPAdminItem extends Component {
                 userid: -1,
                 num: 0,
                 name: '',
-                attending: false,
+                attending: 0,
                 food: '',
                 consideration: ''
             };
@@ -58,92 +57,79 @@ class RSVPAdminItem extends Component {
 
     render() {
         return(
-            <div>
-                <FormGroup>
-                    <Col sm={2}>
-                        <ControlLabel>
-                            Name:
-                        </ControlLabel>
-                    </Col>
-                    <Col sm={10}>
-                        < FormControl
-                            name="name"
-                            label="name"
-                            type="text"
-                            value={this.state.name}
-                            onChange={this.handleOnChange}/>
-                    </Col>
-                </FormGroup>
-                <FormGroup>
-                    <Col sm={2}>
-                        <ControlLabel>
-                            Attending?:
-                        </ControlLabel>
-                    </Col>
-                    <Col sm={10}>
-                        <FormControl
+            <div className="form_section">
+                <div className="form_row_full">
+                    <label>
+                        Name:
+                    </label>
+                    <input
+                        name="name"
+                        label="name"
+                        type="text"
+                        className="form_input required"
+                        value={this.state.name}
+                        onChange={this.handleOnChange}/>
+                </div>
+                <div className="form_row left12_first">
+                    <label>
+                        ATTENDING?
+                    </label>
+                    <div className="select_container">
+                        <select
                             name="attending"
                             label="attending"
                             value={this.state.attending}
                             onChange={this.handleOnChange}
-                            componentClass="select">
-                            <option value={false}>No</option>
-                            <option value={true}>Yes</option>
-                        </FormControl>
-                    </Col>
-                </FormGroup>
-                <FormGroup>
-                    <Col sm={2}>
-                        <ControlLabel>
-                            Food:
-                        </ControlLabel>
-                    </Col>
-                    <Col sm={10}>
-                        <FormControl
+                            className="form_select">
+                            <option value={0}>No</option>
+                            <option value={1}>Both Ceremony and Reception</option>
+                            <option value={2}>Ceremony Only</option>
+                            <option value={3}>Reception Only</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="form_row left12_last">
+                    <label>
+                        MEAL
+                    </label>
+                    <div className="select_container">
+                        <select
                             name="food"
                             label="food"
                             value={this.state.food}
                             onChange={this.handleOnChange}
-                            componentClass="select">
-                            <option value="beef">Beef</option>
+                            className="form_select">
                             <option value="chicken">Chicken</option>
                             <option value="vegetarian">Vegetarian</option>
-                        </FormControl>
-                    </Col>
-                </FormGroup>
-
-                <FormGroup>
-                    <Col sm={2}>
-                        <ControlLabel>
-                            Considerations:
-                        </ControlLabel>
-                    </Col>
-                    <Col sm={10}>
-                        < FormControl
-                            name="consideration"
-                            label="consideration"
-                            type="text"
-                            value={this.state.consideration}
-                            onChange={this.handleOnChange}/>
-                    </Col>
-                </FormGroup>
-                <Col sm={1}>
-                    <Button
-                        bsStyle="primary"
+                        </select>
+                    </div>
+                </div>
+                <div className="form_row_full">
+                    <label>OTHER COMMENTS</label>
+                    <input
+                        name="consideration"
+                        label="consideration"
+                        type="text"
+                        value={this.state.consideration}
+                        className="form_input required"
+                        onChange={this.handleOnChange}/>
+                </div>
+                <div className="form_row">
+                    <input
                         type="button"
-                        onClick={this.updateRsvp}>
-                        Save
-                    </Button>
-                </Col>
-                <Col sm={1}>
-                    <Button
-                        bsStyle="primary"
+                        onClick={this.updateRsvp}
+                        className="form_submit_contact"
+                        value="SAVE">
+                    </input>
+                </div>
+                <div className="form_row">
+                    <input
                         type="button"
-                        onClick={this.deleteRsvp}>
-                        Delete
-                    </Button>
-                </Col>
-                <Row/>
+                        onClick={this.deleteRsvp}
+                        className="form_submit_contact"
+                        value="DELETE">
+                    </input>
+                </div>
             </div>
         );
     }

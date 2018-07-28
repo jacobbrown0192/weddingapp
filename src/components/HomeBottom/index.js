@@ -17,22 +17,19 @@ class HomeBottom extends Component
                         <div className="bottom_icon"><img src={music} alt="" title="" /></div>
                         <h2>SONG REQUESTS</h2>
                         <span className="subtitle">BRING YOUR DANCING SHOES</span>
-                        <p></p>
                         <Link to='/songrequest' className="post_read_more">READ ME</Link>
                     </div>
                     <div className="left13">
                         <div className="bottom_icon"><img src={location} alt="" title="" /></div>
                         <h2>WEDDING LOCATION</h2>
                         <span className="subtitle">GLENDENNING GOLF COURSE</span>
-                        <p></p>
                         <Link to='/faqs#map_location' className="post_read_more">READ ME</Link>
                     </div>
                     <div className="left13_last">
                         <div className="bottom_icon"><img src={gifts} alt="" title="" /></div>
                         <h2>GIFT REGISTRY</h2>
                         <span className="subtitle">GIVEN FREELY AND OUT OF PURE LOVE</span>
-                        <p></p>
-                        <Link to='/faqs' className="post_read_more">READ ME</Link>
+                        <Link to='/faqs#registry' className="post_read_more">READ ME</Link>
                     </div>
 
                     <div className="clear"></div>

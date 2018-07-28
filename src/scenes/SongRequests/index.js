@@ -11,7 +11,7 @@ class SongRequests extends Component
     render()
     {
         return(
-            <div>
+            <div id="top">
                 <PageHeader title={title} header_text={header_text}/>
                 <SongBox url='/api/songs' pollInterval={2000} power={false} auth={this.props.Auth}/>
             </div>

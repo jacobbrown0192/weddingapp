@@ -18,7 +18,7 @@ class Home extends Component
     render()
     {
         return(
-            <div>
+            <div id="top">
                 <TitleContainer/>
                 <SliderContainer/>
                 <CountdownContainer/>

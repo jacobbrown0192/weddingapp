@@ -89,7 +89,7 @@ class RSVPAdminItemBox extends Component {
     render() {
         return (
             <div>
-                <h2>User {this.state.userid}:</h2>
+                <h2>Invite {this.state.userid}:</h2>
                 <RSVPAdminUserList
                     onRSVPUpdate={this.handleRSVPUpdate}
                     onRSVPDelete={this.handleRsvpDelete}

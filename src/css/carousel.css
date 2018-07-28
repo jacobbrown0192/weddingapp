@@ -47,7 +47,7 @@
 	display: block;
 	width: 12px;
 	height: 12px;
-	margin:0px 5px;
+	margin:0px 4px;
 	filter: Alpha(Opacity=50);/*IE7 fix*/
 	opacity: 0.5;
 	-webkit-border-radius: 20px;
@@ -159,4 +159,7 @@
 .owl-carousel  .owl-item {
 	display: flex;
 	justify-content: center;
+}
+.owl-nav {
+	display: none;
 }

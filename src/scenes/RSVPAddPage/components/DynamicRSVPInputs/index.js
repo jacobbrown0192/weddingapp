@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import {FormGroup, FormControl, ControlLabel, Col, Row} from 'react-bootstrap';
+import React, {Component} from 'react';
 
 class DynamicRSVPInputs extends Component
 {
@@ -8,7 +7,7 @@ class DynamicRSVPInputs extends Component
         super(props);
         this.state = {userid: -1, num: 0,
             name: '',
-            attending: false,
+            attending: 0,
             food: '',
             consideration: ''
         };
@@ -33,79 +32,64 @@ class DynamicRSVPInputs extends Component
 
     render()
     {
-        return(
-            <div>
-                <FormGroup>
-                <Col sm={2}>
-                    <ControlLabel>
-                        Name:
-                    </ControlLabel>
-                </Col>
-                <Col sm={10}>
-                    < FormControl
+        return(            <div className="form_section">
+            <div className="form_row_full">
+                <label>
+                    Name:
+                </label>
+                <input
                     name="name"
                     label="name"
                     type="text"
+                    className="form_input required"
                     value={this.state.name}
                     onChange={this.onChange}/>
-                </Col>
-                </FormGroup>
-                <FormGroup>
-                <Col sm={2}>
-                    <ControlLabel>
-                        Attending?:
-                    </ControlLabel>
-                </Col>
-                <Col sm={10}>
-                    <FormControl
-                    name="attending"
-                    label="attending"
-                    value={this.state.rsvp}
-                    onChange={this.onChange}
-                    componentClass="select">
-                        <option value={false}>No</option>
-                        <option value={true}>Yes</option>
-                    </FormControl>
-                </Col>
-                </FormGroup>
-                <FormGroup>
-                <Col sm={2}>
-                    <ControlLabel>
-                        Food:
-                    </ControlLabel>
-                </Col>
-                <Col sm={10}>
-                    <FormControl
-                    name="food"
-                    label="food"
-                    value={this.state.food}
-                    onChange={this.onChange}
-                    componentClass="select">
-                        <option value="beef">Beef</option>
+            </div>
+            <div className="form_row left12_first">
+                <label>
+                    ATTENDING?
+                </label>
+                <div className="select_container">
+                    <select
+                        name="attending"
+                        label="attending"
+                        value={this.state.attending}
+                        onChange={this.onChange}
+                        className="form_select">
+                        <option value={0}>No</option>
+                        <option value={1}>Both Ceremony and Reception</option>
+                        <option value={2}>Ceremony Only</option>
+                        <option value={3}>Reception Only</option>
+                    </select>
+                </div>
+            </div>
+            <div className="form_row left12_last">
+                <label>
+                    MEAL
+                </label>
+                <div className="select_container">
+                    <select
+                        name="food"
+                        label="food"
+                        value={this.state.food}
+                        onChange={this.onChange}
+                        className="form_select">
                         <option value="chicken">Chicken</option>
                         <option value="vegetarian">Vegetarian</option>
-                    </FormControl>
-                </Col>
-                </FormGroup>
-
-                <FormGroup>
-                <Col sm={2}>
-                    <ControlLabel>
-                        Considerations:
-                    </ControlLabel>
-                </Col>
-                <Col sm={10}>
-                    < FormControl
+                    </select>
+                </div>
+            </div>
+            <div className="form_row_full">
+                <label>OTHER COMMENTS</label>
+                <input
                     name="consideration"
                     label="consideration"
                     type="text"
                     value={this.state.consideration}
+                    className="form_input required"
                     onChange={this.onChange}/>
-                </Col>
-                </FormGroup>
-                <Row/>
             </div>
-        )
+        </div>        )
     }
 
 }
