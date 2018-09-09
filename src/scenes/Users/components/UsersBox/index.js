@@ -5,7 +5,7 @@ import UserList from './components/UserList/index';
 class UsersBox extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: [] };
+        this.state = { data: [], intervalId: -1 };
         this.loadUsersFromServer =
             this.loadUsersFromServer.bind(this);
         this.handleUserDelete = this.handleUserDelete.bind(this);
@@ -33,7 +33,13 @@ class UsersBox extends Component {
     componentDidMount()
     {
         this.loadUsersFromServer();
-        setInterval(this.loadUsersFromServer, this.props.pollInterval);
+        let intervalId = setInterval(this.loadUsersFromServer, this.props.pollInterval);
+        this.setState({intervalId: intervalId});
+    }
+
+    componentWillUnmount()
+    {
+        clearInterval(this.state.intervalId)
     }
 
     render() {

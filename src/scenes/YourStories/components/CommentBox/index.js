@@ -7,7 +7,7 @@ import CommentForm from './components/CommentForm/index';
 class CommentBox extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: [], power: false };
+        this.state = { data: [], power: false, intervalId: -1 };
         this.loadCommentsFromServer =
             this.loadCommentsFromServer.bind(this);
         this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -70,9 +70,14 @@ class CommentBox extends Component {
     {
         this.loadCommentsFromServer();
         this.isPower();
-        setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+        let intervalId = setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+        this.setState({intervalId: intervalId});
     }
 
+    componentWillUnmount()
+    {
+        clearInterval(this.state.intervalId)
+    }
     render() {
         return (
             <div className="page_content">

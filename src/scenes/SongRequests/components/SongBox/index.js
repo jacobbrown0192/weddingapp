@@ -7,7 +7,7 @@ import SongForm from "./components/SongForm/index";
 class SongBox extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: [], power: false };
+        this.state = { data: [], power: false, intervalId: -1 };
         this.loadSongsFromServer =
             this.loadSongsFromServer.bind(this);
         this.handleSongSubmit = this.handleSongSubmit.bind(this);
@@ -70,7 +70,13 @@ class SongBox extends Component {
     {
         this.loadSongsFromServer();
         this.isPower();
-        setInterval(this.loadSongsFromServer, this.props.pollInterval);
+        let intervalId = setInterval(this.loadSongsFromServer, this.props.pollInterval);
+        this.setState({intervalId: intervalId});
+    }
+
+    componentWillUnmount()
+    {
+        clearInterval(this.state.intervalId)
     }
 
     render() {
