@@ -13,7 +13,9 @@ var router = express.Router();
 
 var port = process.env.API_PORT || 3001;
 
-mongoose.connect('mongodb://planner:regency-warden-tumbler-nihilist@ds243295.mlab.com:43295/brownquinlanweddingapp');
+// mongoose.connect('mongodb://planner:regency-warden-tumbler-nihilist@ds243295.mlab.com:43295/brownquinlanweddingapp');
+// mongoose.connect('mongodb://planner:regency-warden-tumbler-nihilist@weddingapp-shard-00-00-xo9op.mongodb.net:27017,weddingapp-shard-00-01-xo9op.mongodb.net:27017,weddingapp-shard-00-02-xo9op.mongodb.net:27017/test?ssl=true&replicaSet=WeddingApp-shard-0&authSource=admin&retryWrites=true');
+mongoose.connect('mongodb+srv://planner:regency-warden-tumbler-nihilist@weddingapp-xo9op.mongodb.net/', {dbName: 'wedding'});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

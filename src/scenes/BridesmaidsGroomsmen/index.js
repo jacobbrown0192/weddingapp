@@ -14,7 +14,7 @@ import dylan from '../../images/bridal_party/dylan2.jpg'
 import douglas from '../../images/bridal_party/douglas2.jpg'
 import josh from '../../images/bridal_party/josh4.jpg'
 import zack from '../../images/bridal_party/zack3.jpg'
-import karyn from '../../images/bridal_party/karyn.jpg'
+import jess from '../../images/bridal_party/Jess.jpg'
 import myfanwy from '../../images/bridal_party/myfanwy2.jpg'
 import kelsey from '../../images/bridal_party/Kelsey.jpg'
 import kayla from '../../images/bridal_party/kayla.jpg'
@@ -119,11 +119,11 @@ class BridesmaidsGroomsmen extends Component
                         <div className="small-gb">
                             <div className="about_pic_container">
                                 <span className="about_picframe"></span>
-                                <div className="about_pic"><img src={karyn} alt="" title="" /></div>
+                                <div className="about_pic"><img src={jessa} alt="" title="" /></div>
                             </div>
-                            <h3>KARYN HOWSE</h3>
+                            <h3>JESSA VOKEY</h3>
                             <p className="bridalparty-story">
-                                Kaitlin and Karyn met in second year engineering. They bonded over their mutual love of hot chocolate and dislike of programming while completing a particularly difficult programing assignment in Term 3. Karyn and Kaitlin like to party together, and know they call each other anywhere, anytime to talk about anything.
+                                Jessa and Kaitlin met in their first year of medical school. Their favorite things to do together are cry about neuroanatomy, celebrate every possible situation with cosmos, and plan trips to Disney World instead of paying attention in class. Jessa's least favorite thing about Kaitlin and Jacob is that they live in the west end, despite constant begging to move to Stavanger Drive. Jessa is sure that one day she will be successful in convincing them to move east.
                             </p>
                         </div>
                     </div>
@@ -167,12 +167,11 @@ class BridesmaidsGroomsmen extends Component
                         <div className="small-gb">
                             <div className="about_pic_container">
                                 <span className="about_picframe"></span>
-                                <div className="about_pic"><img src={jessa} alt="" title="" /></div>
+                                <div className="about_pic"><img src={jess} alt="" title="" /></div>
                             </div>
-                            <h3>JESSA VOKEY</h3>
+                            <h3>JESS GUY</h3>
                             <p className="bridalparty-story">
-                                Jessa and Kaitlin met in their first year of medical school. Their favorite things to do together are cry about neuroanatomy, celebrate every possible situation with cosmos, and plan trips to Disney World instead of paying attention in class. Jessa's least favorite thing about Kaitlin and Jacob is that they live in the west end, despite constant begging to move to Stavanger Drive. Jessa is sure that one day she will be successful in convincing them to move east.
-                            </p>
+                                Jess and Kaitlin met in their first year of medical school while running for and being elected to student leadership. In the past two years they have bonded over discussing class issues, planning trivia nights, and a shared love of the Food Network. Jess has become a close friend and is looking forward to standing with Kaitlin on this special day.                            </p>
                         </div>
                     </div>
                     <div className="left14_true">

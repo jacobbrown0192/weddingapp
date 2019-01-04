@@ -16,7 +16,7 @@ import dylan from '../../../../images/bridal_party/dylan2.jpg'
 import douglas from '../../../../images/bridal_party/douglas2.jpg'
 import josh from '../../../../images/bridal_party/josh4.jpg'
 import zack from '../../../../images/bridal_party/zack3.jpg'
-import karyn from '../../../../images/bridal_party/karyn.jpg'
+import jess from '../../../../images/bridal_party/Jess.jpg'
 import myfanwy from '../../../../images/bridal_party/myfanwy2.jpg'
 import kelsey from '../../../../images/bridal_party/Kelsey.jpg'
 import kayla from '../../../../images/bridal_party/kayla.jpg'
@@ -71,11 +71,11 @@ class CarouselContrainer extends Component
                             <div className="left14"><img className="wh-245" src={douglas} alt="" title="" /><h3>DOUGLAS MATTHEWS</h3></div>
                             <div className="left14"><img className="wh-245" src={kelsey} alt="" title="" /><h3>KELSEY BARRETT</h3></div>
                             <div className="left14"><img className="wh-245" src={dylan} alt="" title="" /><h3>DYLAN MATTHEWS</h3></div>
-                            <div className="left14"><img className="wh-245" src={karyn} alt="" title="" /><h3>KARYN HOWSE</h3></div>
+                            <div className="left14"><img className="wh-245" src={jessa} alt="" title="" /><h3>JESSA VOKEY</h3></div>
                             <div className="left14"><img className="wh-245" src={zack} alt="" title="" /><h3>ZACK CHAULK</h3></div>
                             <div className="left14"><img className="wh-245" src={racheal} alt="" title="" /><h3>RACHEAL SEYMOUR</h3></div>
                             <div className="left14"><img className="wh-245" src={colten} alt="" title="" /><h3>COLTEN NORMORE</h3></div>
-                            <div className="left14"><img className="wh-245" src={jessa} alt="" title="" /><h3>JESSA VOKEY</h3></div>
+                            <div className="left14"><img className="wh-245" src={jess} alt="" title="" /><h3>JESS GUY</h3></div>
                             <div className="left14"><img className="wh-245" src={jake} alt="" title="" /><h3>JACOB PARSONS</h3></div>
                             <div className="left14"><img className="wh-245" src={myfanwy} alt="" title="" /><h3>MYFANWY PRICE</h3></div>
                             <div className="left14"><img className="wh-245" src={ross} alt="" title="" /><h3>ROSS MCCLEAN</h3></div>
