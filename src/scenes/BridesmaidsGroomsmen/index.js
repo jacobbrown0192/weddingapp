@@ -182,7 +182,7 @@ class BridesmaidsGroomsmen extends Component
                             </div>
                             <h3>JAKE PARSONS</h3>
                             <p className="bridalparty-story">
-                                Jacob and Jake first met studying computer engineering in university and instantly became friends. Their shared passion in aviation, technology, development, music, high brow jokes, video games, and so much more and even their names show how similar they are. Jake now lives in Ottawa but Jacob, along with a couple of close friends, get together online to keep in touch and talk about their lives, what's new, or just to kick back and have fun. Taking this time every week has kept Jacob and Jake extremely while being so far apart.
+                                Jacob and Jake first met studying computer engineering in university and instantly became friends. Their shared passion in aviation, technology, development, music, high brow jokes, video games, and so much more brought them close. Even their names show how similar they are. Jake now lives in Ottawa but Jacob, along with a couple of close friends, get together online to keep in touch and talk about their lives, what's new, or just to kick back and have fun. Taking this time every week has kept Jacob and Jake extremely while being so far apart.
                             </p>
                         </div>
                     </div>
