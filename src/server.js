@@ -269,10 +269,10 @@ router.route('/rsvp/:rsvp_id')
                 res.send(err);
             console.log(rsvp);
             if(rsvp || rsvp !== null) {
-                (req.body.consideration) ? rsvp.consideration = req.body.consideration : null;
-                (req.body.food) ? rsvp.food = req.body.food : null;
-                (req.body.name) ? rsvp.name = req.body.name : null;
-                (req.body.attending) ? rsvp.attending = req.body.attending : null;
+                rsvp.consideration = req.body.consideration;
+                rsvp.food = req.body.food;
+                rsvp.name = req.body.name;
+                rsvp.attending = req.body.attending;
                 rsvp.save(function (err) {
                     if (err)
                         res.send(err);

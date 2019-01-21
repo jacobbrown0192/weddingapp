@@ -70,10 +70,11 @@ class RSVP extends Component {
                             value={this.state.attending}
                             onChange={this.handleOnChange}
                             className="form_select">
-                                <option value={0}>No</option>
+                                <option value={0}>-</option>
                                 <option value={1}>Both Ceremony and Reception</option>
                                 <option value={2}>Ceremony Only</option>
                                 <option value={3}>Reception Only</option>
+                                <option value={4}>No</option>
                         </select>
                     </div>
                 </div>
