@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import PageHeader from "../../components/PageHeader/index";
 import {Alert} from "react-bootstrap";
+import {Drift} from "react-drift";
 
 let userToken = require('../../utils/UserToken');
 let storeToken = userToken.storeToken;
@@ -118,6 +119,7 @@ class SignInPage extends Component
                         <div className="clear"></div>
                     </div>
                 </div>
+                <Drift appId="hf93wucmdesz" />
             </div>
         );
     }
