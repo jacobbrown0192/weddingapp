@@ -4,6 +4,7 @@ import MapLocation from "../../components/MapLocation/index";
 import '../../colors/blue.css';
 import '../../style.css';
 import bedbathlogo from '../../images/wedding_website_registry/bedbathbeyond.jpg';
+import {Drift} from "react-drift";
 const title = "FREQUENTLY ASKED QUESTIONS";
 const header_text = "";
 
@@ -92,12 +93,15 @@ class FAQs extends Component
                         </h2>
                     </div>
                     <div>
-                        <p className="faq-paragraph">
-                            If you have a question that has not been answered on this page, feel free to contact us!
-                        </p>
+                        <div className="left_full">
+                            <p className="faq-paragraph">
+                                If you have a question that has not been answered on this page, feel free to contact through the live chat found at the bottom right hand side of your screen!
+                            </p>
+                        </div>
                     </div>
                 </div>
             <div className="clear"/>
+                <Drift appId="hf93wucmdesz" />
             </div>
         )
     }

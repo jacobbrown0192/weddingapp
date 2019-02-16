@@ -1,5 +1,6 @@
 //index.js
 import React, {Component} from 'react';
+import {Alert} from "react-bootstrap";
 
 
 class RSVP extends Component {
@@ -12,16 +13,19 @@ class RSVP extends Component {
                 name: '',
                 attending: 0,
                 food: '',
-                consideration: ''
+                consideration: '',
+                rsvpUpdate: false
             };
         this.handleOnChange = this.handleOnChange.bind(this);
         this.updateRsvp = this.updateRsvp.bind(this);
         this.setStateBasedOnProps = this.setStateBasedOnProps.bind(this);
+        this.handleDismiss = this.handleDismiss.bind(this);
     }
 
     updateRsvp()
     {
         this.props.onRSVPUpdate(this.props.uniqueId, this.state);
+        this.setState({ rsvpUpdate: true });
     }
 
     handleOnChange(e)
@@ -31,6 +35,22 @@ class RSVP extends Component {
         state[e.target.name]= e.target.value;
         this.setState({[e.target.name]: e.target.value});
         this.props.onRSVPUpdate(this.props.uniqueId, state);
+    }
+
+    handleDismiss() {
+        this.setState({ rsvpUpdate: false });
+    }
+
+    successfulRsvp()
+    {
+        if (this.state.rsvpUpdate) {
+            return (
+                <Alert bsStyle="info" >Thank you for submitting your RSVP! Make sure to fill out the others if you have more guests.</Alert>
+            )
+        }
+        else {
+            return null
+        }
     }
 
     setStateBasedOnProps()
@@ -104,6 +124,7 @@ class RSVP extends Component {
                         className="form_input required"
                         onChange={this.handleOnChange}/>
                 </div>
+                {this.successfulRsvp()}
                 <div className="form_row">
                     <input
                         type="button"

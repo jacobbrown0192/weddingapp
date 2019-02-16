@@ -54,7 +54,7 @@ class RSVPBox extends Component {
                     data={ this.state.data }
                     power={ this.props.power }
                     userid={ this.props.userid }/>
-                <a href='#' className="thumb_read_more logout" onClick={this.clearLogin}>Log Out</a>
+                <a href='rsvp' className="thumb_read_more logout" onClick={this.clearLogin}>Log Out</a>
                 <div className="clear"></div>
                 </div>
             </div>
