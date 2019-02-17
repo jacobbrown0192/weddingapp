@@ -8,6 +8,8 @@ var Song = require('./model/song');
 var User = require('./model/user');
 var RSVP = require('./model/rsvp');
 
+var axios = require('axios');
+
 var app = express();
 var router = express.Router();
 
@@ -99,19 +101,41 @@ router.route('/songs')
     })
     .post(function(req, res)
     {
-            var song = new Song();
-            song.artist = req.body.artist;
-            song.title = req.body.title;
-            song.hidden = req.body.hidden;
-            song.votes = req.body.votes;
-            song.user_id = 'unused'
-            song.save(function (err)
-            {
-                if (err)
-                    res.send(err);
-                res.json({message: 'User successfully added!'});
-            }
-        );
+        axios.get(`https://itunes.apple.com/search?term=${req.body.title}&entity=song&attribute=songTerm&limit=200`)
+            .then((response) => {
+                var foundMatch = false;
+                for (let searchSong of response.data.results) {
+
+                    console.log(searchSong.artistName)
+                    if(searchSong.artistName.toLowerCase().includes(req.body.artist.toLowerCase())) {
+                        foundMatch= true;
+                        Song.find({ artist: searchSong.artistName, title: searchSong.trackName}, function (err, docs) {
+                            if (err)
+                                res.send(err);
+                            if (docs && docs.length) {
+                                res.json({message: 'Song already exists!', title: searchSong.trackName, artist: searchSong.artistName, add: false});
+                            }
+                            else {
+                                var song = new Song();
+                                song.artist = searchSong.artistName;
+                                song.title = searchSong.trackName;
+                                song.hidden = req.body.hidden;
+                                song.votes = req.body.votes;
+                                song.user_id = 'unused';
+                                song.save(function (err) {
+                                    if (err)
+                                        res.send(err);
+                                    res.json({message: 'Song Added!', title: searchSong.trackName, artist: searchSong.artistName, add: true});
+                                });
+                            }
+                        });
+                        break;
+                    }
+                }
+                if (foundMatch === false){
+                    res.json({message: 'Could not find the song, Make sure you spell the artist name and song correctly!', title: req.body.title, artist: req.body.artist, add: false});
+                }
+            });
     });
 
 router.route('/songs/:song_id')

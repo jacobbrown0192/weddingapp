@@ -3,16 +3,18 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import SongList from "./components/SongList/index";
 import SongForm from "./components/SongForm/index";
+import {Alert} from "react-bootstrap";
 
 class SongBox extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: [], power: false, intervalId: -1 };
+        this.state = { data: [], power: false, intervalId: -1, message: false, displayMessage: '' };
         this.loadSongsFromServer =
             this.loadSongsFromServer.bind(this);
         this.handleSongSubmit = this.handleSongSubmit.bind(this);
         this.handleSongDelete = this.handleSongDelete.bind(this);
         this.handleSongUpdate = this.handleSongUpdate.bind(this);
+        this.handleDismiss = this.handleDismiss.bind(this);
         this.isPower = this.isPower.bind(this);
     }
 
@@ -23,20 +25,30 @@ class SongBox extends Component {
             {
                 this.setState({data:res.data });
             });
-        console.log(this.state.data);
     }
 
     handleSongSubmit(song)
     {
         //add Post Request
-        let songs = this.state.data;
-        let newSongs = songs.concat([song])
-        this.setState({ data: newSongs });
         axios.post(this.props.url, song)
+            .then(res =>
+            {
+                this.setState({ message: true });
+                this.setState({ displayMessage: res.data.message + ' ' + res.data.title + ' by ' + res.data.artist})
+                console.log(song)
+                let songs = this.state.data;
+                if (res.data.add === true) {
+                    console.log(song)
+                    let songs = this.state.data;
+                    song.artist = res.data.artist;
+                    song.title = res.data.title;
+                    let newSongs = songs.concat([song]);
+                    this.setState({ data: newSongs });
+                }
+            })
             .catch(err=>
             {
                 console.error(err);
-                this.setState({ data: songs });
             })
     }
 
@@ -70,8 +82,9 @@ class SongBox extends Component {
     {
         this.loadSongsFromServer();
         this.isPower();
-        let intervalId = setInterval(this.loadSongsFromServer, this.props.pollInterval);
-        this.setState({intervalId: intervalId});
+        // let intervalId = setInterval(this.loadSongsFromServer, this.props.pollInterval);
+        // this.setState({intervalId: intervalId});
+        this.setState({ message: false });
     }
 
     componentWillUnmount()
@@ -79,11 +92,28 @@ class SongBox extends Component {
         clearInterval(this.state.intervalId)
     }
 
+    songUpdateMessage()
+    {
+        if (this.state.message) {
+            return (
+                <Alert bsStyle="danger" onDismiss={this.handleDismiss}>{this.state.displayMessage}</Alert>
+            )
+        }
+        else {
+            return null
+        }
+    }
+
+    handleDismiss() {
+        this.setState({ message: false });
+    }
+
     render() {
         return (
             <div className="page_content">
                 <div className="full_width_centered">
                     <SongForm onSongSubmit={ this.handleSongSubmit }/>
+                    {this.songUpdateMessage()}
                     <SongList
                         onSongDelete={this.handleSongDelete}
                         onSongUpdate={this.handleSongUpdate}
