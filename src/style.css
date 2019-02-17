@@ -184,6 +184,13 @@ span.users {
 	justify-content: center;
 }
 
+.alert-success {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+	margin-top: -60px
+}
+
 .alert-dismissable, .alert-dismissible {
 	padding-right: 35px;
 }

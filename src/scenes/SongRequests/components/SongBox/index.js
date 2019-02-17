@@ -35,10 +35,8 @@ class SongBox extends Component {
             {
                 this.setState({ message: true });
                 this.setState({ displayMessage: res.data.message + ' ' + res.data.title + ' by ' + res.data.artist})
-                console.log(song)
-                let songs = this.state.data;
+
                 if (res.data.add === true) {
-                    console.log(song)
                     let songs = this.state.data;
                     song.artist = res.data.artist;
                     song.title = res.data.title;
@@ -82,8 +80,8 @@ class SongBox extends Component {
     {
         this.loadSongsFromServer();
         this.isPower();
-        // let intervalId = setInterval(this.loadSongsFromServer, this.props.pollInterval);
-        // this.setState({intervalId: intervalId});
+        let intervalId = setInterval(this.loadSongsFromServer, this.props.pollInterval);
+        this.setState({intervalId: intervalId});
         this.setState({ message: false });
     }
 
@@ -96,7 +94,7 @@ class SongBox extends Component {
     {
         if (this.state.message) {
             return (
-                <Alert bsStyle="danger" onDismiss={this.handleDismiss}>{this.state.displayMessage}</Alert>
+                <Alert bsStyle="success" onDismiss={this.handleDismiss}>{this.state.displayMessage}</Alert>
             )
         }
         else {

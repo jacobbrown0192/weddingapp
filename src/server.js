@@ -105,8 +105,6 @@ router.route('/songs')
             .then((response) => {
                 var foundMatch = false;
                 for (let searchSong of response.data.results) {
-
-                    console.log(searchSong.artistName)
                     if(searchSong.artistName.toLowerCase().includes(req.body.artist.toLowerCase())) {
                         foundMatch= true;
                         Song.find({ artist: searchSong.artistName, title: searchSong.trackName}, function (err, docs) {
