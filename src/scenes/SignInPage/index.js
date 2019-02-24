@@ -97,7 +97,7 @@ class SignInPage extends Component
                             <h3 className="form_toptitle" id="Note"></h3>
                             < form>
                                 <div className="form_section">
-                                    <h3 className="form_subtitle">ENTER YOUR RSVP CODE BELLOW:</h3>
+                                    <h3 className="form_subtitle">ENTER YOUR RSVP CODE BELOW:</h3>
                                 <div className="form_row_full">
                                     < input
                                         name="password"
